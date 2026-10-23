@@ -1,0 +1,50 @@
+{
+  "name": "wikitree",
+  "productName": "WikiTree",
+  "desktopName": "wikitree.desktop",
+  "version": "1.0.0",
+  "description": "Build trees of Wikipedia articles and read them in place.",
+  "type": "module",
+  "main": "src/main.js",
+  "private": true,
+  "author": "boranedo",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux AppImage",
+    "install-desktop": "sh scripts/install-desktop.sh"
+  },
+  "build": {
+    "appId": "app.wikitree",
+    "productName": "WikiTree",
+    "files": [
+      "src/**",
+      "renderer/**",
+      "build/icon.png",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Education",
+      "icon": "build/icon.png"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.png"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "build/icon.png"
+    }
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3"
+  }
+}
