@@ -9,6 +9,7 @@
   "see also" and external-link sections.
 - Save articles (with images) for offline reading, one at a time or the whole project.
 - Search and the reader say when there is no internet connection.
+- The cache of recently opened articles is capped at 200 MB (least recently opened removed first).
 - In-app confirmation dialogs; headers grow to fit their text.
 - Every change is saved immediately; each window edits its own copy (last change wins);
   the last change is saved even when the window closes.

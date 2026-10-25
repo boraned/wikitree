@@ -4,6 +4,7 @@ import path from 'node:path';
 import {
   dirs, validId, checkLang, pagesDir, pageKey, titleKey, writeAtomic, readJson, cachedJson,
 } from './paths.js';
+import { touch, prune } from './cache.js';
 
 // Wikimedia asks API clients to identify themselves with a contact URL.
 export const USER_AGENT = 'WikiTree/1.1 (https://github.com/boraned/wikitree)';
@@ -53,18 +54,19 @@ export async function page({ title, lang, projectId }) {
   }
   const cacheFile = path.join(dirs.cache, 'pages', `${pageKey(lang, title)}.json`);
   const cached = await cachedJson(cacheFile, PAGE_TTL);
-  if (cached.value && cached.fresh) return cached.value;
+  const fromCache = () => { touch(cacheFile); return cached.value; };
+  if (cached.value && cached.fresh) return fromCache();
 
   let r;
   try {
     r = await wikiFetch(`${wikiBase(lang)}/w/rest.php/v1/page/${encodeURIComponent(titleKey(title))}/html`);
   } catch (e) {
-    if (cached.value) return cached.value;
+    if (cached.value) return fromCache();
     throw e;
   }
   if (r.status === 404) throw new Error('No such page');
   if (!r.ok) {
-    if (cached.value) return cached.value;
+    if (cached.value) return fromCache();
     throw new Error(`Page failed (${r.status})`);
   }
   const html = await r.text();
@@ -72,6 +74,7 @@ export async function page({ title, lang, projectId }) {
   const m = html.match(/<link rel="dc:isVersionOf" href="[^"]*\/wiki\/([^"]+)"/);
   const result = { title: m ? decodeURIComponent(m[1]).replace(/_/g, ' ') : title, lang, html };
   await writeAtomic(cacheFile, JSON.stringify(result)).catch(() => {});
+  prune(cacheFile); // keep the cache under its size cap (runs in the background)
   return result;
 }
 

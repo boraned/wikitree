@@ -63,7 +63,7 @@ The OS's per-user app folder: `~/.config/WikiTree` (Linux), `%APPDATA%\WikiTree`
 projects/<id>/project.json   the tree
 projects/<id>/pages/         articles saved for offline reading
 projects/<id>/media/         their images
-cache/                       recently opened articles (3 days)
+cache/                       recently opened articles (max 200 MB, least recently opened removed first)
 ```
 
 Each change is written with an atomic replace. Several windows can be open at once: each edits its own
@@ -95,6 +95,7 @@ src/
     projects.js            project files (create, save, delete, migrate)
     wikipedia.js           search, summaries, article HTML, namespaces, cache
     offline.js             saving articles + images for offline reading
+    cache.js               size cap for the article cache
     paths.js               data folders, ids, atomic writes
     preload.cjs            the small API the UI is allowed to call
   renderer/                UI (plain ES modules, no framework, no build step)

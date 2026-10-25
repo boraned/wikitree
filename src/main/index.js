@@ -6,6 +6,7 @@ import { initDirs, validId, mediaDir } from './paths.js';
 import * as projects from './projects.js';
 import * as wikipedia from './wikipedia.js';
 import * as offline from './offline.js';
+import { prune } from './cache.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const RENDERER = path.join(HERE, '..', 'renderer');
@@ -119,6 +120,7 @@ function buildMenu() {
 app.whenReady().then(async () => {
   await initDirs(app.getPath('userData'));
   await projects.migrateLegacy();
+  prune(); // trim the article cache left by earlier sessions
   registerIpc();
   registerProtocol();
   buildMenu();
