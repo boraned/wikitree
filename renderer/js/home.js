@@ -1,38 +1,31 @@
-// Main menu: logo, new project, project list.
+// Main menu: logo, big green "+" card, project cards.
 import { api, showError } from './api.js';
 import { navigate } from './app.js';
-import { h, timeAgo } from './dom.js';
+import { h, timeAgo, icon } from './dom.js';
+import { pickNode, confirmDialog } from './modal.js';
 
 export async function renderHome(root) {
-  const input = h('input', { class: 'new-input', placeholder: 'New project', maxlength: 120, autocomplete: 'off' });
-  const create = h('button', { class: 'btn-green', type: 'submit' }, 'Create');
-  const form = h('form', { class: 'new-form' }, input, create);
   const grid = h('div', { class: 'grid' });
-
   const view = h('div', { class: 'home' },
     h('header', { class: 'brand' },
       h('img', { class: 'globe', src: 'img/wikipedia-globe.svg', alt: '' }),
       h('h1', { class: 'wordmark' }, 'WikiTree'),
     ),
-    form,
     grid,
   );
   root.append(view);
-  input.focus();
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const title = input.value.trim();
-    if (!title) return input.focus();
-    create.disabled = true;
+  const add = h('button', { class: 'card new-card', title: 'New project', 'aria-label': 'New project' });
+  add.innerHTML = icon.plus;
+  add.onclick = async () => {
+    const choice = await pickNode();
+    if (!choice) return;
     try {
-      const p = await api.createProject(title);
+      const p = await api.createProject(choice);
       navigate(`#/p/${p.id}`);
-    } catch (err) {
-      showError(err.message);
-      create.disabled = false;
-    }
-  });
+    } catch (err) { showError(err.message); }
+  };
+  grid.append(add);
 
   const projects = await api.projects();
   for (const p of projects) {
@@ -41,7 +34,7 @@ export async function renderHome(root) {
     if (!p.thumbs.length) thumbs.append(h('img', { class: 'collage-empty', src: 'img/wikipedia-globe.svg', alt: '' }));
 
     const del = h('button', { class: 'card-del', title: 'Delete' }, '×');
-    const card = h('a', { class: 'card', href: `#/p/${p.id}` },
+    const card = h('div', { class: 'card', role: 'button', tabindex: 0 },
       thumbs,
       h('div', { class: 'card-body' },
         h('div', { class: 'card-title' }, p.title),
@@ -50,13 +43,12 @@ export async function renderHome(root) {
       del,
     );
     card.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (e.target === del) return;
+      if (e.target.closest('.card-del')) return;
       navigate(`#/p/${p.id}`);
     });
-    del.addEventListener('click', async (e) => {
-      e.preventDefault();
-      if (!confirm(`Delete "${p.title}"?`)) return;
+    card.addEventListener('keydown', (e) => { if (e.key === 'Enter') navigate(`#/p/${p.id}`); });
+    del.addEventListener('click', async () => {
+      if (!(await confirmDialog(`Delete "${p.title}"?`))) return;
       try {
         await api.deleteProject(p.id);
         card.remove();

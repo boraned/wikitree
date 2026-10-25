@@ -32,6 +32,7 @@
 
 /* media */
 .wiki-body img { max-width: 100%; height: auto; vertical-align: middle; border-radius: 4px; }
+.wiki-body img.broken { display: none; }
 .wiki-body img.tr { background: #f0f0f0; }
 .wiki-body figure { margin: 4px 0 18px; display: table; }
 .wiki-body figure[typeof~="mw:File/Thumb"], .wiki-body figure[typeof~="mw:File/Frame"],

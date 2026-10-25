@@ -42,5 +42,7 @@ async function route() {
 }
 
 window.addEventListener('popstate', route);
+// Images that fail (e.g. offline) disappear instead of showing a broken icon.
+document.addEventListener('error', (e) => { if (e.target?.tagName === 'IMG') e.target.classList.add('broken'); }, true);
 if (!history.state) history.replaceState({ depth: 0 }, '', location.hash || '#/');
 route();
