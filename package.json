@@ -3,7 +3,7 @@
   "productName": "WikiTree",
   "desktopName": "wikitree.desktop",
   "version": "1.1.0",
-  "description": "Build trees of Wikipedia articles and read them in place — a desktop app for Linux, Windows and macOS.",
+  "description": "Build trees of Wikipedia articles and read them in place \u2014 a desktop app for Linux, Windows and macOS.",
   "keywords": [
     "wikipedia",
     "mind-map",
@@ -37,6 +37,7 @@
     "dist:linux": "electron-builder --linux AppImage",
     "dist:win": "electron-builder --win portable",
     "dist:mac": "electron-builder --mac",
+    "release": "bash scripts/release.sh",
     "install-desktop": "sh scripts/install-desktop.sh"
   },
   "build": {

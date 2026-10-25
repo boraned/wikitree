@@ -39,11 +39,14 @@
 
 Get the latest build from [Releases](https://github.com/boraned/wikitree/releases/latest):
 
-| OS | File | Notes |
+| OS | File | How to open |
 | --- | --- | --- |
-| Linux | `WikiTree-<version>-linux-x86_64.AppImage` | `chmod +x` it and run. |
-| Windows | `WikiTree-<version>-windows-portable.exe` | Runs without installing. The build is unsigned, so SmartScreen may ask: *More info → Run anyway*. |
-| macOS | `WikiTree-<version>-mac-universal.dmg` | Unsigned build: the first time, right-click the app → *Open*. |
+| Windows | `WikiTree-<version>-Windows-x64.exe` | Double-click — no install. Unsigned, so SmartScreen may ask: *More info → Run anyway*. |
+| macOS (M1–M4) | `WikiTree-<version>-macOS-AppleSilicon.zip` | Unzip, move *WikiTree* to Applications, open it. The first time macOS blocks it: *System Settings → Privacy & Security → Open Anyway*. |
+| macOS (Intel) | `WikiTree-<version>-macOS-Intel.zip` | Same as above. |
+| Linux | `WikiTree-<version>-Linux-x64.AppImage` | Make it executable (`chmod +x`) and run it. Some distros need `libfuse2`. |
+
+Each is a single file with everything included; it only needs an internet connection for Wikipedia.
 
 ## Use
 
@@ -90,6 +93,7 @@ npm run screenshots       # regenerate docs/screenshots
 npm run dist:linux        # AppImage   → dist/
 npm run dist:win          # portable .exe → dist/
 npm run dist:mac          # universal .dmg/.zip (run on a Mac)
+npm run release           # all four release files → releases/ (on Linux; Mac apps ad-hoc signed)
 ```
 
 Pushing a `v*` tag runs `.github/workflows/release.yml`, which builds all three platforms on native
