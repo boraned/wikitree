@@ -1,12 +1,14 @@
 // WikiTree — Electron main process entry: window, app protocol, menu, IPC.
-import { app, BrowserWindow, ipcMain, protocol, net, shell, Menu } from 'electron';
+import { app, BrowserWindow, ipcMain, protocol, net, shell, Menu, session } from 'electron';
+import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { initDirs, validId, mediaDir } from './paths.js';
+import { initDirs, validId, mediaDir, removeLegacyCaches, readSettings, writeSetting } from './paths.js';
 import * as projects from './projects.js';
 import * as wikipedia from './wikipedia.js';
 import * as offline from './offline.js';
-import { prune } from './cache.js';
+import { PARTITION, memorySession } from './http.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const RENDERER = path.join(HERE, '..', 'renderer');
@@ -16,6 +18,22 @@ const isMac = process.platform === 'darwin';
 app.setName('WikiTree');
 // Separate data folder (portable use, tests).
 if (process.env.WIKITREE_HOME) app.setPath('userData', process.env.WIKITREE_HOME);
+
+// Chromium's own session files (HTTP cache, code cache, local storage…) go to a temporary folder
+// that is deleted when the app quits, so the data folder only holds projects and settings.
+const SESSION_ROOT = path.join(os.tmpdir(), 'wikitree-session');
+const SESSION_DIR = path.join(SESSION_ROOT, String(process.pid));
+fs.mkdirSync(SESSION_DIR, { recursive: true });
+app.setPath('sessionData', SESSION_DIR);
+const removeSessionDir = () => { try { fs.rmSync(SESSION_DIR, { recursive: true, force: true }); } catch { /* best effort */ } };
+app.on('quit', removeSessionDir);
+process.on('exit', removeSessionDir);
+// Leftovers from runs that crashed (their process is gone).
+const alive = (pid) => { try { process.kill(pid, 0); return true; } catch (e) { return e.code === 'EPERM'; } };
+for (const d of fs.readdirSync(SESSION_ROOT)) {
+  if (/^\d+$/.test(d) && Number(d) !== process.pid && !alive(Number(d))) fs.rmSync(path.join(SESSION_ROOT, d), { recursive: true, force: true });
+}
+app.commandLine.appendSwitch('disable-gpu-shader-disk-cache');
 
 protocol.registerSchemesAsPrivileged([
   { scheme: 'wikitree', privileges: { standard: true, secure: true, supportFetchAPI: true } },
@@ -35,6 +53,7 @@ const handlers = {
   'offline:save': (a) => offline.savePage(a),
   'offline:remove': (a) => offline.removePage(a),
   'offline:state': (a) => offline.savedState(a),
+  'settings:set': ({ key, value }) => (key === 'lang' ? writeSetting('lang', String(value)) : null),
   'open-external': (url) => { if (/^https?:\/\//.test(url)) shell.openExternal(url); },
 };
 
@@ -49,6 +68,7 @@ function registerIpc() {
   ipcMain.on('projects:save-sync', (e, p) => {
     try { projects.saveProjectSync(p); e.returnValue = { ok: true }; } catch (err) { e.returnValue = { ok: false, error: err.message }; }
   });
+  ipcMain.on('settings:get', (e) => { e.returnValue = readSettings(); });
 }
 
 // ---------- app protocol: wikitree://app/… (UI) and wikitree://media/<project>/<file> (offline images) ----------
@@ -59,7 +79,8 @@ function serveFile(base, rel) {
 }
 
 function registerProtocol() {
-  protocol.handle('wikitree', (req) => {
+  // Registered on the in-memory session the window uses.
+  memorySession().protocol.handle('wikitree', (req) => {
     const u = new URL(req.url);
     const rel = decodeURIComponent(u.pathname);
     if (u.host === 'media') {
@@ -87,6 +108,8 @@ function createWindow() {
       contextIsolation: true,
       sandbox: true,
       nodeIntegration: false,
+      partition: PARTITION,
+      spellcheck: false,
     },
   });
   // Never leave the app: in-window navigation is blocked, external links open in the system browser.
@@ -118,9 +141,10 @@ function buildMenu() {
 }
 
 app.whenReady().then(async () => {
+  session.defaultSession.setSpellCheckerEnabled(false); // no dictionary download
   await initDirs(app.getPath('userData'));
   await projects.migrateLegacy();
-  prune(); // trim the article cache left by earlier sessions
+  await removeLegacyCaches();
   registerIpc();
   registerProtocol();
   buildMenu();

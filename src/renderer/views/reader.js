@@ -14,6 +14,7 @@ export async function renderReader(root, projectId, nodeId) {
   const lang = node.lang || 'en';
   const treeHash = `#/p/${projectId}`;
   sessionStorage.setItem(`wt-last-${projectId}`, nodeId);
+  const listeners = new AbortController(); // window listeners, removed when leaving the page
 
   // ---------- chrome ----------
   const backBtn = iconBtn('back', 'Back', 'icon-btn back');
@@ -122,30 +123,27 @@ export async function renderReader(root, projectId, nodeId) {
     if (el) scroller.scrollTo({ top: el.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - 16, behavior: 'smooth' });
   }
 
-  // ---------- offline save toggle ----------
+  // ---------- download (for offline reading) ----------
+  // Green = can be downloaded. Normal colour and not clickable = already downloaded (✓) or no internet.
   let saved = page.saved === true;
   const paintSave = () => {
+    const online = navigator.onLine;
     saveBtn.innerHTML = saved ? icon.saved : icon.save;
-    saveBtn.classList.toggle('on', saved);
-    saveBtn.title = saved ? 'Saved offline' : 'Save offline';
-    saveBtn.disabled = false;
+    saveBtn.classList.toggle('ready', !saved && online);
+    saveBtn.disabled = saved || !online;
+    saveBtn.title = saved ? 'Downloaded' : online ? 'Download' : 'No internet connection';
   };
   paintSave();
+  window.addEventListener('online', paintSave, { signal: listeners.signal });
+  window.addEventListener('offline', paintSave, { signal: listeners.signal });
   saveBtn.onclick = async () => {
+    if (saved || saveBtn.classList.contains('busy')) return;
     saveBtn.disabled = true;
     saveBtn.classList.add('busy');
     try {
-      if (saved) {
-        delete node.thumbLocal;
-        store.changed();
-        await store.flush();
-        await api.unsavePage({ projectId, lang, title: node.title });
-        saved = false;
-      } else {
-        const r = await saveOffline(api, projectId, node);
-        if (r.thumbLocal) { node.thumbLocal = r.thumbLocal; store.changed(); }
-        saved = true;
-      }
+      const r = await saveOffline(api, projectId, node);
+      if (r.thumbLocal) { node.thumbLocal = r.thumbLocal; store.changed(); }
+      saved = true;
     } catch (e) {
       showError(isOffline(e) ? 'No internet connection' : e.message);
     } finally {
@@ -279,6 +277,7 @@ export async function renderReader(root, projectId, nodeId) {
   window.addEventListener('mouseup', onMouse);
 
   return () => {
+    listeners.abort();
     scrollMemory.set(nodeId, scroller.scrollTop);
     hidePreview();
     document.querySelector('.lightbox')?.remove();

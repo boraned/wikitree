@@ -7,9 +7,11 @@
 - Projects start from a big **+** card; the first node is an article or a header.
 - Wikipedia search in 30 languages; right-to-left articles; per-language clean-up of reference,
   "see also" and external-link sections.
-- Save articles (with images) for offline reading, one at a time or the whole project.
+- Download articles (with images) for offline reading, one at a time or the whole project. The download
+  button is green when there is something to download, otherwise normal colour and not clickable.
 - Search and the reader say when there is no internet connection.
-- The cache of recently opened articles is capped at 200 MB (least recently opened removed first).
+- Nothing from Wikipedia stays on disk unless downloaded: articles you read are kept in memory only, and
+  caches left by older versions are removed.
 - In-app confirmation dialogs; headers grow to fit their text.
 - Every change is saved immediately; each window edits its own copy (last change wins);
   the last change is saved even when the window closes.

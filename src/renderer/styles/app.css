@@ -52,9 +52,12 @@ button:disabled { cursor: default; }
 
 .icon-btn { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--text); transition: background .15s, border-color .15s, color .15s; flex: none; }
 .icon-btn:hover { background: var(--panel-2); border-color: #4a4a4f; }
-.save-btn.on { color: var(--green-2); border-color: #2f6b41; }
+.save-btn.ready, .save-btn.busy { background: var(--green); border-color: var(--green); color: #fff; }
+.save-btn.ready:hover { background: var(--green-2); border-color: var(--green-2); }
+.icon-btn:disabled:not(.busy) { background: var(--panel); border-color: var(--line); color: var(--text); }
 .save-btn.busy { width: auto; padding: 0 10px; display: flex; align-items: center; gap: 6px; }
 .save-btn.busy svg { animation: blink 1s infinite; }
+.save-btn.busy .progress-text { color: #fff; }
 .progress-text { font-size: 12px; font-weight: 700; color: var(--muted); }
 
 .error-toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #3a2224; border: 1px solid #6b2f2f; color: #ffb4ae; padding: 10px 18px; border-radius: 10px; font-weight: 600; z-index: 100; }

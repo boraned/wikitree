@@ -103,16 +103,24 @@ await link.click();
 await win.waitForFunction(() => document.querySelector('.crumb.cur')?.textContent !== 'Orman');
 await win.waitForSelector('.wiki-body section', { state: 'attached', timeout: 30000 });
 check('a blue link opens and becomes a child', nodes().some((n) => n.parent === byTitle('Orman').id), linkTitle);
+// A sentence from this (never downloaded) article must not be on disk after the app closes.
+const unsavedText = (await win.$eval('.wiki-body p', (p) => p.textContent.trim())).slice(0, 60);
 await win.click('.back');
 await win.waitForSelector('.wiki-body section', { state: 'attached', timeout: 30000 });
 check('Back returns to the parent article', (await win.textContent('.page-title')) === 'Orman');
+check('download button is green and clickable', await win.$eval('.save-btn', (b) => b.classList.contains('ready') && !b.disabled));
 await win.click('.save-btn');
-await win.waitForSelector('.save-btn.on', { timeout: 60000 });
+await win.waitForSelector('.save-btn:disabled:not(.busy):not(.ready)', { timeout: 60000 });
+check('after downloading it shows ✓ in normal colour and is not clickable',
+  await win.$eval('.save-btn', (b) => b.disabled && !b.classList.contains('ready') && b.title === 'Downloaded'));
 const pid = project().id;
-check('saving keeps the article and its images',
+check('download keeps the article and its images',
   fs.readdirSync(path.join(HOME, 'projects', pid, 'pages')).length === 1 && fs.readdirSync(path.join(HOME, 'projects', pid, 'media')).length > 0);
 await win.click('.icon-btn[title="Tree"]');
 await win.waitForSelector('.node.is-root');
+await win.waitForTimeout(300);
+check('tree "download all" is green while some articles are not downloaded',
+  await win.$eval('.tree-view .save-btn', (b) => b.classList.contains('ready') && !b.disabled));
 
 console.log('Two windows');
 const second = await launch();
@@ -131,5 +139,20 @@ await second.app.close();
 await addToRoot(win, { header: 'Last change before close' });
 await app.close();
 check('a change made right before closing is kept', nodes().some((n) => n.title === 'Last change before close'));
+
+console.log('Nothing kept after closing');
+const leftovers = [];
+const walk = (dir) => {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (p === path.join(HOME, 'projects')) continue;
+    if (e.isDirectory()) walk(p);
+    else if (fs.readFileSync(p).includes(unsavedText)) leftovers.push(path.relative(HOME, p));
+  }
+};
+walk(HOME);
+check('a read-but-not-downloaded article is not on disk', leftovers.length === 0, leftovers.join(', '));
+check('no cache folders in the data folder', !['cache', 'Cache', 'Code Cache'].some((d) => fs.existsSync(path.join(HOME, d))),
+  fs.readdirSync(HOME).join(', '));
 
 finish();

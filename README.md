@@ -26,7 +26,8 @@
 - **Free layout** — drag nodes anywhere; drop one onto another to re-attach it with its whole branch.
   Nodes that get too close glide apart.
 - **30 languages** — search any of them; right-to-left languages are laid out correctly.
-- **Offline** — save an article (or the whole project) with its images and read it without internet.
+- **Offline when you choose** — download an article (or the whole project) with its images and read it without
+  internet. Nothing else is kept: articles you only read are held in memory and gone when the app closes.
 - **Always saved** — every change is written to disk immediately.
 
 | | |
@@ -50,9 +51,11 @@ Get the latest build from [Releases](https://github.com/boraned/wikitree/release
   or *Header*. Click a project card to open it.
 - **Tree** — **+** under a node adds a child. Drag a node to move it with its branch; drop it on another
   node to attach it there. Double-click a header to rename it; right-click for collapse and delete.
-  Drag the background to pan, scroll to zoom. Top bar: save all offline · arrange · fit.
+  Drag the background to pan, scroll to zoom. Top bar: download all · arrange · fit.
 - **Reader** — **Back** is top-left. Blue links open and become children; green links are already children.
-  Ctrl / middle-click adds a link without leaving the page. ↓ saves the article for offline reading.
+  Ctrl / middle-click adds a link without leaving the page. ↓ downloads the article for offline reading.
+- **Download button** — green when there is something to download; normal colour and not clickable when
+  everything is downloaded (✓) or there is no internet.
 
 ## Where data lives
 
@@ -61,10 +64,14 @@ The OS's per-user app folder: `~/.config/WikiTree` (Linux), `%APPDATA%\WikiTree`
 
 ```
 projects/<id>/project.json   the tree
-projects/<id>/pages/         articles saved for offline reading
+projects/<id>/pages/         downloaded articles
 projects/<id>/media/         their images
-cache/                       recently opened articles (max 200 MB, least recently opened removed first)
+settings.json                last search language
 ```
+
+Nothing from Wikipedia is stored unless you download it. Pages and images you read are kept in memory
+while the app runs; Chromium's own session files go to a temporary folder that is removed when the app
+quits (any leftovers from a crash are removed on the next start).
 
 Each change is written with an atomic replace. Several windows can be open at once: each edits its own
 copy, and the window that changes something last overwrites the file. Set `WIKITREE_HOME` to keep the
@@ -93,9 +100,9 @@ src/
   main/                    Electron main process
     index.js               window, wikitree:// protocol, menu, IPC
     projects.js            project files (create, save, delete, migrate)
-    wikipedia.js           search, summaries, article HTML, namespaces, cache
-    offline.js             saving articles + images for offline reading
-    cache.js               size cap for the article cache
+    wikipedia.js           search, summaries, article HTML, namespaces (in-memory cache)
+    offline.js             downloading articles + images for offline reading
+    http.js                in-memory network session (nothing cached on disk)
     paths.js               data folders, ids, atomic writes
     preload.cjs            the small API the UI is allowed to call
   renderer/                UI (plain ES modules, no framework, no build step)

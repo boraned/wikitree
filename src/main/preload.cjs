@@ -21,5 +21,7 @@ contextBridge.exposeInMainWorld('wikitree', {
   savePage: (a) => call('offline:save', a),
   unsavePage: (a) => call('offline:remove', a),
   savedState: (projectId, items) => call('offline:state', { projectId, items }),
+  settings: () => ipcRenderer.sendSync('settings:get'),
+  setSetting: (key, value) => call('settings:set', { key, value }),
   openExternal: (url) => call('open-external', url),
 });

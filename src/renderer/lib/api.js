@@ -10,8 +10,10 @@ export const LANGS = [
   ['vi', 'Tiếng Việt'], ['ja', '日本語'], ['zh', '中文'], ['ko', '한국어'], ['ca', 'Català'],
 ];
 
-export const getLang = () => localStorage.getItem('wt-lang') || 'en';
-export const setLang = (l) => localStorage.setItem('wt-lang', l);
+// The window's storage is in memory only, so the last search language lives in settings.json.
+let lang = api.settings().lang || 'en';
+export const getLang = () => lang;
+export const setLang = (l) => { lang = l; api.setSetting('lang', l).catch(() => {}); };
 
 export const isOffline = (e) => !navigator.onLine || /internet/i.test(e?.message || '');
 

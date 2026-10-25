@@ -30,7 +30,7 @@ function run(file, { netns = false } = {}) {
   return r.status === 0;
 }
 
-let ok = run('app.test.mjs') && run('cache.test.mjs');
+let ok = run('app.test.mjs');
 if (ok && offline) {
   if (!linux || !has('unshare') || !has('ip')) {
     console.log('\nOffline test needs Linux with unshare and ip; skipped.');

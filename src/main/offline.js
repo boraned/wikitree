@@ -1,5 +1,5 @@
 // Offline copies: an article's cleaned HTML plus its images, stored inside the project folder.
-import { net } from 'electron';
+import { httpFetch } from './http.js';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { checkLang, sha, pageKey, pagesDir, mediaDir, projectFile, writeAtomic } from './paths.js';
@@ -26,7 +26,7 @@ async function downloadAll(urls, dir, limit = 6) {
       const hit = existing.find((f) => f.startsWith(base));
       if (hit) { map.set(url, hit); continue; }
       try {
-        const r = await net.fetch(url, { headers: { 'user-agent': USER_AGENT }, signal: AbortSignal.timeout(30000) });
+        const r = await httpFetch(url, { headers: { 'user-agent': USER_AGENT }, signal: AbortSignal.timeout(30000) });
         if (!r.ok) throw new Error();
         const file = base + mediaExt(url, r.headers.get('content-type') || '');
         await fs.writeFile(path.join(dir, file), Buffer.from(await r.arrayBuffer()));

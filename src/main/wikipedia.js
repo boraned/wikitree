@@ -1,28 +1,46 @@
-// Wikipedia access (REST + Action API) for any language edition, with a short on-disk cache.
-import { net } from 'electron';
+// Wikipedia access (REST + Action API) for any language edition.
+// Articles not downloaded by the user are kept in memory only, for the current session.
 import path from 'node:path';
-import {
-  dirs, validId, checkLang, pagesDir, pageKey, titleKey, writeAtomic, readJson, cachedJson,
-} from './paths.js';
-import { touch, prune } from './cache.js';
+import { validId, checkLang, pagesDir, pageKey, titleKey, readJson } from './paths.js';
+import { httpFetch } from './http.js';
 
 // Wikimedia asks API clients to identify themselves with a contact URL.
 export const USER_AGENT = 'WikiTree/1.1 (https://github.com/boraned/wikitree)';
-const PAGE_TTL = 3 * 24 * 3600 * 1000;
-const NS_TTL = 30 * 24 * 3600 * 1000;
 
 const wikiBase = (lang) => `https://${checkLang(lang)}.wikipedia.org`;
 const absUrl = (u) => (u && u.startsWith('//') ? `https:${u}` : u || null);
 
 async function wikiFetch(url) {
   try {
-    return await net.fetch(url, {
+    return await httpFetch(url, {
       headers: { 'user-agent': USER_AGENT, 'api-user-agent': USER_AGENT },
       signal: AbortSignal.timeout(20000),
     });
   } catch {
     throw new Error('No internet connection');
   }
+}
+
+// ---------- in-memory article cache (this session only) ----------
+const MEMORY_LIMIT = 32 * 1024 * 1024; // characters of HTML kept for back/forward and re-opening
+const articles = new Map();            // key → { title, lang, html }, oldest first
+let memoryUsed = 0;
+
+function remember(key, value) {
+  if (articles.has(key)) memoryUsed -= articles.get(key).html.length;
+  articles.delete(key);
+  articles.set(key, value);
+  memoryUsed += value.html.length;
+  for (const [k, v] of articles) {
+    if (memoryUsed <= MEMORY_LIMIT || k === key) break;
+    articles.delete(k);
+    memoryUsed -= v.html.length;
+  }
+}
+function recall(key) {
+  const v = articles.get(key);
+  if (v) { articles.delete(key); articles.set(key, v); } // most recently used goes last
+  return v;
 }
 
 export async function search({ q, lang }) {
@@ -45,45 +63,33 @@ export async function summary({ title, lang }) {
   };
 }
 
-/** Article HTML. Order: the project's offline copy → fresh cache → network → stale cache. */
+/** Article HTML: the project's download if there is one, otherwise memory, otherwise Wikipedia. */
 export async function page({ title, lang, projectId }) {
   checkLang(lang);
   if (validId(projectId)) {
     const saved = await readJson(path.join(pagesDir(projectId), `${pageKey(lang, title)}.json`));
     if (saved) return { ...saved, saved: true };
   }
-  const cacheFile = path.join(dirs.cache, 'pages', `${pageKey(lang, title)}.json`);
-  const cached = await cachedJson(cacheFile, PAGE_TTL);
-  const fromCache = () => { touch(cacheFile); return cached.value; };
-  if (cached.value && cached.fresh) return fromCache();
+  const key = pageKey(lang, title);
+  const known = recall(key);
+  if (known) return known;
 
-  let r;
-  try {
-    r = await wikiFetch(`${wikiBase(lang)}/w/rest.php/v1/page/${encodeURIComponent(titleKey(title))}/html`);
-  } catch (e) {
-    if (cached.value) return fromCache();
-    throw e;
-  }
+  const r = await wikiFetch(`${wikiBase(lang)}/w/rest.php/v1/page/${encodeURIComponent(titleKey(title))}/html`);
   if (r.status === 404) throw new Error('No such page');
-  if (!r.ok) {
-    if (cached.value) return fromCache();
-    throw new Error(`Page failed (${r.status})`);
-  }
+  if (!r.ok) throw new Error(`Page failed (${r.status})`);
   const html = await r.text();
   // Redirects are followed; the page names its canonical title in <link rel="dc:isVersionOf">.
   const m = html.match(/<link rel="dc:isVersionOf" href="[^"]*\/wiki\/([^"]+)"/);
   const result = { title: m ? decodeURIComponent(m[1]).replace(/_/g, ' ') : title, lang, html };
-  await writeAtomic(cacheFile, JSON.stringify(result)).catch(() => {});
-  prune(cacheFile); // keep the cache under its size cap (runs in the background)
+  remember(key, result);
   return result;
 }
 
 /** Namespace prefixes ("File:", "Dosya:", "Kategorie:") so links to non-articles are dropped in any language. */
+const namespaceLists = new Map();
 export async function namespaces(lang) {
   checkLang(lang);
-  const file = path.join(dirs.cache, `ns-${lang}.json`);
-  const cached = await cachedJson(file, NS_TTL);
-  if (cached.value && cached.fresh) return cached.value;
+  if (namespaceLists.has(lang)) return namespaceLists.get(lang);
   try {
     const r = await wikiFetch(`${wikiBase(lang)}/w/api.php?action=query&meta=siteinfo&siprop=namespaces%7Cnamespacealiases&format=json&formatversion=2`);
     if (!r.ok) throw new Error();
@@ -95,9 +101,9 @@ export async function namespaces(lang) {
     }
     for (const a of j.query.namespacealiases || []) if (a.id !== 0) names.add(a.alias.toLowerCase());
     const list = [...names];
-    await writeAtomic(file, JSON.stringify(list)).catch(() => {});
+    namespaceLists.set(lang, list);
     return list;
   } catch {
-    return cached.value || [];
+    return [];
   }
 }

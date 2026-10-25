@@ -2,20 +2,42 @@
 //
 // Everything lives in the OS per-user data folder (override with WIKITREE_HOME):
 //   projects/<id>/project.json   the tree — whole-file writes, last writer wins
-//   projects/<id>/pages/*.json   articles saved for offline reading (cleaned HTML)
-//   projects/<id>/media/*        images used by saved articles
-//   cache/                       recently opened articles + per-language namespace lists
+//   projects/<id>/pages/*.json   downloaded articles (cleaned HTML)
+//   projects/<id>/media/*        images used by downloaded articles
+//   settings.json                small preferences (last search language)
+// Nothing else from Wikipedia is written to disk: see http.js.
 import fss, { promises as fs } from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-export const dirs = { data: '', cache: '' };
+export const dirs = { home: '', data: '' };
 
 export async function initDirs(userData) {
+  dirs.home = userData;
   dirs.data = path.join(userData, 'projects');
-  dirs.cache = path.join(userData, 'cache');
   await fs.mkdir(dirs.data, { recursive: true });
-  await fs.mkdir(path.join(dirs.cache, 'pages'), { recursive: true });
+}
+
+/** Left in the data folder by older versions: the article cache and Chromium's session files. */
+const LEGACY_CACHES = [
+  'cache', 'Cache', 'Code Cache', 'GPUCache', 'GPUPersistentCache', 'DawnGraphiteCache', 'DawnWebGPUCache',
+  'Shared Dictionary', 'Dictionaries', 'Local Storage', 'Session Storage', 'blob_storage', 'Trust Tokens',
+  'Trust Tokens-journal', 'Network Persistent State', 'TransportSecurity', 'DIPS', 'DIPS-journal', 'Cookies',
+  'Cookies-journal', 'Preferences', 'declarative_performance_observer.db', 'declarative_performance_observer.db-journal',
+];
+export async function removeLegacyCaches() {
+  await Promise.all(LEGACY_CACHES.map((d) => fs.rm(path.join(dirs.home, d), { recursive: true, force: true }).catch(() => {})));
+}
+
+// ---------- settings ----------
+const settingsFile = () => path.join(dirs.home, 'settings.json');
+export function readSettings() {
+  try { return JSON.parse(fss.readFileSync(settingsFile(), 'utf8')); } catch { return {}; }
+}
+export async function writeSetting(key, value) {
+  const s = readSettings();
+  s[key] = value;
+  await writeAtomic(settingsFile(), JSON.stringify(s));
 }
 
 // ---------- validation ----------
@@ -65,12 +87,4 @@ export function writeAtomicSync(file, text) {
 
 export async function readJson(file) {
   try { return JSON.parse(await fs.readFile(file, 'utf8')); } catch { return null; }
-}
-
-/** Reads a JSON cache file and reports whether it is younger than `ttl` ms. */
-export async function cachedJson(file, ttl) {
-  try {
-    const st = await fs.stat(file);
-    return { value: await readJson(file), fresh: Date.now() - st.mtimeMs < ttl };
-  } catch { return { value: null, fresh: false }; }
 }

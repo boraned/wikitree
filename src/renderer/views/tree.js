@@ -16,6 +16,7 @@ export async function renderTree(root, projectId) {
   const N = project.nodes;
   const viewKey = `wt-view-${projectId}`;
   const lastKey = `wt-last-${projectId}`;
+  const listeners = new AbortController(); // window listeners, removed when leaving the page
 
   const homeBtn = iconBtn('home', 'Projects');
   const saveAllBtn = iconBtn('save', 'Save all offline', 'icon-btn save-btn');
@@ -435,6 +436,7 @@ export async function renderTree(root, projectId) {
     refresh({ changed: true });
     reveal(n.id);
     flash(n.id);
+    repaintSaveAll();
   }
 
   async function remove(id) {
@@ -448,6 +450,7 @@ export async function renderTree(root, projectId) {
     for (const r of removed) {
       if (r.type === 'wiki' && !store.hasWiki(r.title, r.lang)) api.unsavePage({ projectId, lang: r.lang, title: r.title }).catch(() => {});
     }
+    repaintSaveAll();
   }
 
   function rename(id) {
@@ -513,7 +516,9 @@ export async function renderTree(root, projectId) {
     menu.style.top = `${Math.max(8, Math.min(y, innerHeight - r.height - 8))}px`;
   }
 
-  // ---------- save all for offline ----------
+  // ---------- download all (for offline reading) ----------
+  // Green = something left to download. Normal colour and not clickable = all downloaded (✓),
+  // nothing to download, or no internet.
   const uniqueWikis = () => {
     const seen = new Map();
     for (const n of store.wikiNodes()) seen.set(`${n.lang}:${n.title.toLowerCase()}`, n);
@@ -522,19 +527,26 @@ export async function renderTree(root, projectId) {
   async function paintSaveAll() {
     const wikis = uniqueWikis();
     const state = wikis.length ? await api.savedState(projectId, wikis.map((n) => ({ lang: n.lang, title: n.title }))) : [];
+    if (saveAllBtn.classList.contains('busy') || !view.isConnected) return { wikis, state };
     const all = wikis.length > 0 && state.every(Boolean);
+    const ready = !all && wikis.length > 0 && navigator.onLine;
     saveAllBtn.innerHTML = all ? icon.saved : icon.save;
-    saveAllBtn.classList.toggle('on', all);
-    saveAllBtn.title = all ? 'Saved offline' : 'Save all offline';
+    saveAllBtn.classList.toggle('ready', ready);
+    saveAllBtn.disabled = !ready;
+    saveAllBtn.title = all ? 'Downloaded' : !navigator.onLine ? 'No internet connection' : wikis.length ? 'Download all' : 'Nothing to download';
     return { wikis, state };
   }
-  paintSaveAll().catch(() => {});
+  const repaintSaveAll = () => { paintSaveAll().catch(() => {}); };
+  repaintSaveAll();
+  window.addEventListener('online', repaintSaveAll, { signal: listeners.signal });
+  window.addEventListener('offline', repaintSaveAll, { signal: listeners.signal });
   saveAllBtn.onclick = async () => {
-    if (saveAllBtn.classList.contains('busy')) return;
+    if (saveAllBtn.classList.contains('busy') || saveAllBtn.disabled) return;
     const { wikis, state } = await paintSaveAll();
     const todo = wikis.filter((_, i) => !state[i]);
     if (!todo.length) return;
     saveAllBtn.classList.add('busy');
+    saveAllBtn.disabled = true;
     const progress = h('span', { class: 'progress-text' });
     saveAllBtn.append(progress);
     let done = 0;
@@ -554,10 +566,12 @@ export async function renderTree(root, projectId) {
       done++;
     }
     saveAllBtn.classList.remove('busy');
-    if (view.isConnected) { refresh(); await paintSaveAll().catch(() => {}); }
+    progress.remove();
+    if (view.isConnected) { refresh(); repaintSaveAll(); }
   };
 
   return () => {
+    listeners.abort();
     cancelAnimationFrame(raf);
     closeMenus();
     window.removeEventListener('pointermove', onMove);

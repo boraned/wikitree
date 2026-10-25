@@ -10,6 +10,9 @@ await win.waitForSelector('.card:not(.new-card)');
 await win.click('.card:not(.new-card)');
 await win.waitForSelector('.node.is-root');
 await fit(win);
+await win.waitForTimeout(300);
+check('tree "download all" is not green and not clickable offline',
+  await win.$eval('.tree-view .save-btn', (b) => b.disabled && !b.classList.contains('ready')));
 
 await win.click('.node.wiki:has-text("Orman") .title');
 await win.waitForSelector('.wiki-body section', { state: 'attached', timeout: 15000 });
@@ -17,6 +20,7 @@ await win.waitForTimeout(1200);
 const imgs = await win.$$eval('.wiki-body img', (e) => e.map((i) => i.src.startsWith('wikitree://media/') && i.complete && i.naturalWidth > 0));
 check('saved article opens', (await win.textContent('.page-title')) === 'Orman');
 check('its images load from disk', imgs.length > 0 && imgs.every(Boolean), `${imgs.filter(Boolean).length}/${imgs.length}`);
+check('downloaded article shows ✓, not clickable', await win.$eval('.save-btn', (b) => b.disabled && b.title === 'Downloaded'));
 
 await win.click('.back');
 await win.waitForSelector('.node.is-root');
