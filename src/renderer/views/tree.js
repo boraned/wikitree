@@ -301,6 +301,9 @@ export async function renderTree(root, projectId) {
   let pan = null;
   let press = null;
   let suppressClick = false;
+  // A dragged node carries its branch along; the first node moves on its own
+  // (carrying the whole tree would just be panning).
+  const moving = (id) => (N[id].parent == null ? [id] : store.subtree(id).filter((x) => N[x].x != null));
 
   viewport.addEventListener('pointerdown', (e) => {
     if (e.button !== 0) return;
@@ -328,7 +331,7 @@ export async function renderTree(root, projectId) {
     if (!press.started) {
       if (Math.hypot(dxs, dys) < DRAG_START) return;
       press.started = true;
-      const ids = store.subtree(press.id).filter((x) => N[x].x != null);
+      const ids = moving(press.id);
       drag = { ids: new Set(ids), orig: new Map(ids.map((x) => [x, { x: N[x].x, y: N[x].y }])) };
       for (const x of ids) els.get(x)?.classList.add('dragging');
       viewport.classList.add('dragging-node');
@@ -366,7 +369,7 @@ export async function renderTree(root, projectId) {
       dropTarget = null;
       drag = null;
       if (target && target !== N[id].parent) store.reparent(id, target);
-      refresh({ pinned: new Set(store.subtree(id)), changed: true });
+      refresh({ pinned: new Set(moving(id)), changed: true });
       suppressClick = true;
       setTimeout(() => (suppressClick = false), 0);
     }

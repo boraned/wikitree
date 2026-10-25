@@ -68,6 +68,21 @@ const after = byTitle('Photosynthesis');
 check('no overlaps after moving a node onto a neighbour', (await overlaps(win)).length === 0);
 check('moved position is saved', Math.hypot(after.x - before.x, after.y - before.y) > 30);
 
+// The first node moves on its own; the rest of the tree stays put.
+await fit(win);
+const rootBefore = nodes().find((n) => n.parent == null);
+const otherBefore = byTitle('Something');
+const rb = await (await win.$('.node.is-root')).boundingBox();
+await drag(win, { x: rb.x + rb.width / 2, y: rb.y + 12 }, { x: rb.x + rb.width / 2 - 160, y: rb.y - 60 });
+await win.mouse.up();
+await settle(win, 1200);
+const rootAfter = nodes().find((n) => n.parent == null);
+check('first node can be moved (saved)', Math.hypot(rootAfter.x - rootBefore.x, rootAfter.y - rootBefore.y) > 60,
+  `${Math.round(rootBefore.x)},${Math.round(rootBefore.y)} → ${Math.round(rootAfter.x)},${Math.round(rootAfter.y)}`);
+check('moving it leaves the other nodes in place', Math.hypot(byTitle('Something').x - otherBefore.x, byTitle('Something').y - otherBefore.y) < 1);
+check('dragging the first node does not open it', !!(await win.$('.tree-view')));
+check('no overlaps after moving the first node', (await overlaps(win)).length === 0);
+
 await win.hover('.node.wiki:has-text("Yaprak")');
 await win.click('.node.wiki:has-text("Yaprak") .del');
 await win.waitForSelector('.modal .btn-danger');
