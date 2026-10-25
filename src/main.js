@@ -128,6 +128,21 @@ async function deleteProject(id) {
   return { ok: true };
 }
 
+// v1.0 stored projects as projects/<id>.json; move each into its own folder.
+async function migrateLegacy() {
+  for (const f of await fs.readdir(DATA)) {
+    const id = f.replace(/\.json$/, '');
+    if (!f.endsWith('.json') || !validId(id)) continue;
+    try {
+      await fs.mkdir(projectDir(id), { recursive: true });
+      await fs.access(projectFile(id)).then(
+        () => fs.rm(path.join(DATA, f)),            // already migrated by another window
+        () => fs.rename(path.join(DATA, f), projectFile(id)),
+      );
+    } catch (e) { console.error('migrate', f, e.message); }
+  }
+}
+
 // ---------- wikipedia ----------
 const absUrl = (u) => (u && u.startsWith('//') ? `https:${u}` : u || null);
 
@@ -360,6 +375,7 @@ app.whenReady().then(async () => {
   CACHE = path.join(app.getPath('userData'), 'cache');
   await fs.mkdir(DATA, { recursive: true });
   await fs.mkdir(path.join(CACHE, 'pages'), { recursive: true });
+  await migrateLegacy();
 
   protocol.handle('wikitree', (req) => {
     const u = new URL(req.url);

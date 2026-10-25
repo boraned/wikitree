@@ -158,8 +158,12 @@ export async function renderTree(root, projectId) {
   }
 
   function ensurePositions(vis) {
-    if (N[project.rootId].x == null) { tidy(); return; }
-    for (const id of vis) if (N[id].x == null) Object.assign(N[id], store.childSlot(N[N[id].parent]));
+    if (N[project.rootId].x == null) { tidy(); return true; }
+    let placed = false;
+    for (const id of vis) {
+      if (N[id].x == null) { Object.assign(N[id], store.childSlot(N[N[id].parent])); placed = true; }
+    }
+    return placed;
   }
 
   /** Pushes overlapping nodes apart until every pair keeps GAP. Pinned nodes never move. */
@@ -201,8 +205,8 @@ export async function renderTree(root, projectId) {
   /** Re-render, place, de-overlap and animate. `changed` persists the result. */
   function refresh({ pinned, animate = true, changed = false } = {}) {
     const vis = sync();
-    ensurePositions(vis);
-    if (resolve(pinned) || changed) store.changed();
+    const placed = ensurePositions(vis);
+    if (resolve(pinned) || changed || placed) store.changed();
     if (!animate) for (const id of vis) disp.set(id, { x: N[id].x, y: N[id].y });
     kick();
   }
