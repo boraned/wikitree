@@ -3,14 +3,36 @@
   "productName": "WikiTree",
   "desktopName": "wikitree.desktop",
   "version": "1.1.0",
-  "description": "Build trees of Wikipedia articles and read them in place.",
-  "type": "module",
-  "main": "src/main.js",
-  "private": true,
-  "author": "boranedo",
+  "description": "Build trees of Wikipedia articles and read them in place — a desktop app for Linux, Windows and macOS.",
+  "keywords": [
+    "wikipedia",
+    "mind-map",
+    "knowledge-tree",
+    "reader",
+    "electron",
+    "offline"
+  ],
+  "homepage": "https://github.com/boraned/wikitree#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boraned/wikitree.git"
+  },
+  "bugs": {
+    "url": "https://github.com/boraned/wikitree/issues"
+  },
+  "author": "Boran Omeroglu <omerogluboran@gmail.com>",
   "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "src/main/index.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "electron .",
+    "test": "node tests/run.mjs",
+    "test:offline": "node tests/run.mjs --offline",
+    "screenshots": "node scripts/screenshots.mjs",
     "dist": "electron-builder",
     "dist:linux": "electron-builder --linux AppImage",
     "dist:win": "electron-builder --win portable",
@@ -18,12 +40,11 @@
     "install-desktop": "sh scripts/install-desktop.sh"
   },
   "build": {
-    "appId": "app.wikitree",
+    "appId": "io.github.boraned.wikitree",
     "productName": "WikiTree",
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
     "files": [
       "src/**",
-      "renderer/**",
       "build/icon.png",
       "package.json"
     ],
@@ -65,6 +86,7 @@
   },
   "devDependencies": {
     "electron": "^45.0.0",
-    "electron-builder": "^26.15.3"
+    "electron-builder": "^26.15.3",
+    "playwright-core": "^1.64.1"
   }
 }

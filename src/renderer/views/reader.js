@@ -1,9 +1,9 @@
 // Wiki reader: cleaned Wikipedia article; blue links become child nodes.
-import { api, cachedSummary, showError, isOffline } from './api.js';
-import { navigate, goBack } from './app.js';
-import { h, iconBtn, icon } from './dom.js';
-import { cleanArticle, saveOffline } from './clean.js';
-import * as store from './store.js';
+import { api, cachedSummary, showError, isOffline } from '../lib/api.js';
+import { navigate, goBack } from '../app.js';
+import { h, iconBtn, icon } from '../lib/dom.js';
+import { cleanArticle, saveOffline } from '../lib/clean.js';
+import * as store from '../lib/store.js';
 
 const scrollMemory = new Map();
 
@@ -85,6 +85,16 @@ export async function renderReader(root, projectId, nodeId) {
 
   loading.remove();
   body.innerHTML = html;
+  // Wikipedia text is CC BY-SA: credit the source and licence under every article.
+  const source = `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(page.title.replace(/ /g, '_'))}`;
+  const credit = h('footer', { class: 'attribution', dir: 'ltr' },
+    h('a', { href: source }, 'Wikipedia'), ' · ',
+    h('a', { href: 'https://creativecommons.org/licenses/by-sa/4.0/' }, 'CC BY-SA 4.0'));
+  credit.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (a) { e.preventDefault(); api.openExternal(a.href); }
+  });
+  article.append(credit);
   markInTree();
   buildToc();
   scroller.scrollTop = scrollMemory.get(nodeId) || 0;

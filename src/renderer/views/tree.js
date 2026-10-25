@@ -1,11 +1,11 @@
 // Project tree: free-positioned nodes. Drag to move a branch, drop it on another node to re-attach it,
 // and nodes that end up too close glide apart. Every change is saved.
-import { api, showError, isOffline } from './api.js';
-import { navigate } from './app.js';
-import { h, iconBtn, icon } from './dom.js';
-import { pickNode, confirmDialog } from './modal.js';
-import { saveOffline } from './clean.js';
-import * as store from './store.js';
+import { api, showError, isOffline } from '../lib/api.js';
+import { navigate } from '../app.js';
+import { h, iconBtn, icon } from '../lib/dom.js';
+import { pickNode, confirmDialog } from '../lib/modal.js';
+import { saveOffline } from '../lib/clean.js';
+import * as store from '../lib/store.js';
 
 const GAP = 18;        // space always kept between two nodes
 const DRAG_START = 5;  // px a press must travel before it becomes a drag

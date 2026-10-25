@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: System libraries for Electron + virtual display
+        run: sudo apt-get update && sudo apt-get install -y xvfb libgtk-3-0 libnss3 libasound2t64 libgbm1
+      - run: npm ci --include=dev
+      - name: Check syntax
+        run: for f in $(git ls-files '*.js' '*.mjs' '*.cjs'); do node --check "$f" || exit 1; done
+      - name: End-to-end tests (talk to Wikipedia)
+        run: npm test

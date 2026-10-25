@@ -1,14 +1,14 @@
 // Main menu: logo, big green "+" card, project cards.
-import { api, showError } from './api.js';
-import { navigate } from './app.js';
-import { h, timeAgo, icon } from './dom.js';
-import { pickNode, confirmDialog } from './modal.js';
+import { api, showError } from '../lib/api.js';
+import { navigate } from '../app.js';
+import { h, timeAgo, icon } from '../lib/dom.js';
+import { pickNode, confirmDialog } from '../lib/modal.js';
 
 export async function renderHome(root) {
   const grid = h('div', { class: 'grid' });
   const view = h('div', { class: 'home' },
     h('header', { class: 'brand' },
-      h('img', { class: 'globe', src: 'img/wikipedia-globe.svg', alt: '' }),
+      h('img', { class: 'globe', src: 'assets/img/wikipedia-globe.svg', alt: '' }),
       h('h1', { class: 'wordmark' }, 'WikiTree'),
     ),
     grid,
@@ -31,7 +31,7 @@ export async function renderHome(root) {
   for (const p of projects) {
     const thumbs = h('div', { class: `collage n${Math.min(p.thumbs.length, 4)}` },
       ...p.thumbs.map((src) => h('img', { src, alt: '', loading: 'lazy' })));
-    if (!p.thumbs.length) thumbs.append(h('img', { class: 'collage-empty', src: 'img/wikipedia-globe.svg', alt: '' }));
+    if (!p.thumbs.length) thumbs.append(h('img', { class: 'collage-empty', src: 'assets/img/wikipedia-globe.svg', alt: '' }));
 
     const del = h('button', { class: 'card-del', title: 'Delete' }, '×');
     const card = h('div', { class: 'card', role: 'button', tabindex: 0 },

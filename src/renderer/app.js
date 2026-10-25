@@ -1,8 +1,8 @@
 // Router: #/ home · #/p/<id> tree · #/p/<id>/w/<nodeId> reader.
-import { renderHome } from './home.js';
-import { renderTree } from './tree.js';
-import { renderReader } from './reader.js';
-import { showError } from './api.js';
+import { renderHome } from './views/home.js';
+import { renderTree } from './views/tree.js';
+import { renderReader } from './views/reader.js';
+import { showError } from './lib/api.js';
 
 const app = document.getElementById('app');
 let cleanup = null;
