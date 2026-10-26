@@ -1,0 +1,83 @@
+# ---------- Deeper rings: societies, places, works and machines ----------
+United States > Declaration of Independence (United States) | Constitution of the United States | George Washington | Abraham Lincoln | American Revolutionary War | Westward expansion | New Deal | History of the United States | Washington, D.C. | Statue of Liberty
+China > History of China | Chinese Communist Party | Mao Zedong | Deng Xiaoping | Beijing | Forbidden City | Yellow River | Chinese economic reform
+India > History of India | Indus River | Mughal Empire | British Raj | Partition of India | Jawaharlal Nehru | Delhi | Taj Mahal | Indian independence movement
+Turkey > History of Turkey | Anatolia | Ankara | Bosphorus | Cappadocia | Hittites | Turkish cuisine | Grand Bazaar, Istanbul
+Japan > History of Japan | Samurai | Tokyo | Mount Fuji | Edo period | Meiji Restoration | Shinkansen | Kyoto
+Germany > History of Germany | Prussia | Weimar Republic | Berlin | German reunification | Holy Roman Empire
+United Kingdom > History of the United Kingdom | Parliament of the United Kingdom | British monarchy | Westminster system | England | Scotland | Wales | Northern Ireland
+France > History of France | Paris | Louvre | Palace of Versailles | French Revolution | Louis XIV
+Russia > History of Russia | Moscow | Saint Petersburg | Kremlin | Peter the Great | Trans-Siberian Railway | Siberia
+Brazil > History of Brazil | Rio de Janeiro | São Paulo | Brasília | Carnival in Rio de Janeiro
+Egypt > History of Egypt | Nile Delta | Aswan Dam | Suez Crisis | Valley of the Kings
+Mexico > History of Mexico | Mexico City | Teotihuacan | Aztec Empire | Day of the Dead
+Italy > History of Italy | Venice | Florence | Vatican City | Pompeii
+Istanbul > Hagia Sophia | Topkapı Palace | Sultan Ahmed Mosque | Galata Tower | Constantinople
+Jerusalem > Western Wall | Temple Mount | Church of the Holy Sepulchre | Dome of the Rock | Old City of Jerusalem
+Rome > Pantheon, Rome | Roman Forum | St. Peter's Basilica | Sistine Chapel | Trevi Fountain
+Paris > Eiffel Tower | Notre-Dame de Paris | Arc de Triomphe | Seine
+London > Big Ben | Tower of London | Buckingham Palace | Thames | London Underground
+New York City > Manhattan | Central Park | Empire State Building | Wall Street | Brooklyn Bridge
+Tokyo > Shibuya | Tokyo Tower | Tokyo Skytree | Imperial Palace, Tokyo
+French Revolution > Storming of the Bastille | Reign of Terror | Declaration of the Rights of Man and of the Citizen | Maximilien Robespierre | Liberté, égalité, fraternité
+American Revolution > Boston Tea Party | Thomas Jefferson | Benjamin Franklin | Founding Fathers of the United States
+Russian Revolution > Vladimir Lenin | Bolsheviks | October Revolution | Leon Trotsky | Russian Civil War
+Byzantine Empire > Justinian I | Theodosian Walls | Greek fire | Byzantine art
+Viking Age > Vikings | Longship | Leif Erikson | Norse colonization of North America | Runes
+Silk Road > Marco Polo | Caravanserai | Samarkand | Xi'an | Spice trade
+Crusades > First Crusade | Saladin | Knights Templar | Siege of Jerusalem (1099)
+Black Death > Yersinia pestis | Flagellant | Plague doctor
+Islamic Golden Age > House of Wisdom | Baghdad | Al-Andalus | Córdoba, Spain | Ibn Sina
+Scientific Revolution > Novum Organum | Copernican heliocentrism | Mechanical philosophy
+Age of Discovery > Portuguese discoveries | Spanish colonization of the Americas | Treaty of Tordesillas | Circumnavigation | Henry the Navigator
+Atlantic slave trade > Middle Passage | Triangular trade | Slavery in the United States | Abolition of slavery timeline
+Steam engine > Thomas Newcomen | Watt steam engine | Steam locomotive | Steamship | Stephenson's Rocket
+Railway > Rail transport | Rail gauge | Railway signalling | Maglev | Orient Express
+Car > History of the automobile | Ford Model T | Karl Benz | Automotive industry | Car safety | Traffic collision
+Aircraft > History of aviation | Airliner | Boeing 747 | Concorde | Airship | Glider (aircraft)
+Ship > History of navigation | Sailing | Titanic | Container ship | Aircraft carrier | Submarine | Navigation | Lighthouse
+Smartphone > iPhone | Android (operating system) | Mobile app | Touchscreen | Smartphone addiction
+Personal computer > Apple II | IBM Personal Computer | Macintosh | Graphical user interface | Xerox PARC
+World Wide Web > Web page | Web server | Hypertext | Web 2.0 | CERN
+Google > Larry Page | Sergey Brin | Alphabet Inc. | PageRank | Google Maps
+Large language model > GPT-4 | Claude (language model) | Gemini (language model) | Llama (language model) | Prompt engineering | Hallucination (artificial intelligence)
+Machine learning > Supervised learning | Unsupervised learning | Training, validation, and test data sets | Overfitting | Gradient descent | Support vector machine | Decision tree learning | Random forest
+Artificial neural network > Perceptron | Backpropagation | Convolutional neural network | Recurrent neural network | Attention (machine learning)
+Integrated circuit > Jack Kilby | Robert Noyce | Photolithography | Semiconductor industry | TSMC | Chip design
+Transistor > MOSFET | Bipolar junction transistor | Bell Labs | William Shockley | John Bardeen
+Cryptocurrency > Blockchain | Ethereum | Satoshi Nakamoto | Smart contract
+# ---------- Deeper rings: belief, art and play ----------
+Jesus > Sermon on the Mount | Nativity of Jesus | Resurrection of Jesus | Parables of Jesus | Historical Jesus
+Muhammad > Hijrah | Medina | Revelation | Seal of the prophets | Battle of Badr
+Gautama Buddha > Lumbini | Bodh Gaya | Enlightenment in Buddhism | Dharmachakra
+Bible > Old Testament | Gospel | Book of Genesis | Psalms | King James Version
+Quran > Surah | Al-Fatiha | Tafsir | Quranic Arabic
+Yoga > Hatha yoga | Asana | Pranayama | Yoga Sutras of Patanjali
+Zen > Zazen | Koan | Japanese Zen | Dōgen
+Taoism > Zhuangzi (book) | Wu wei | Qi | I Ching
+Olympic Games > Ancient Olympic Games | Summer Olympic Games | Winter Olympic Games | International Olympic Committee | Olympic symbols | Pierre de Coubertin
+Association football > History of association football | Laws of the Game (association football) | Pelé | Diego Maradona | Lionel Messi | UEFA Champions League | FIFA
+Chess > Chess opening | Checkmate | World Chess Championship | Garry Kasparov | Deep Blue (chess computer) | Magnus Carlsen | History of chess
+Basketball > NBA | Michael Jordan | James Naismith | Slam dunk
+Go (game) > AlphaGo | Go strategy and tactics | Lee Sedol
+Classical music > Baroque music | Classical period (music) | Romantic music | Symphony | Concerto | Sonata | String quartet | Frédéric Chopin | Pyotr Ilyich Tchaikovsky | Antonio Vivaldi
+Jazz > Louis Armstrong | Miles Davis | Duke Ellington | Improvisation | Swing music | Bebop
+Rock music > Rock and roll | Elvis Presley | The Rolling Stones | Led Zeppelin | Queen (band) | Heavy metal music | Punk rock | Electric guitar
+Pop music > Michael Jackson | Madonna | Taylor Swift | K-pop | Music video
+Hip-hop > Rapping | DJing | Breakdancing | Graffiti
+Electronic music > Techno | House music | Synthesizer | Kraftwerk | Drum machine
+Opera > La traviata | The Magic Flute | Giuseppe Verdi | Richard Wagner | Libretto
+Impressionism > Impression, Sunrise | Pierre-Auguste Renoir | Edgar Degas | Camille Pissarro | En plein air
+Surrealism > André Breton | René Magritte | The Persistence of Memory
+Mona Lisa > Lisa del Giocondo | Sfumato | Theft of the Mona Lisa
+Vincent van Gogh > Sunflowers (Van Gogh series) | The Potato Eaters | Theo van Gogh (art dealer)
+Pablo Picasso > Guernica (Picasso) | Les Demoiselles d'Avignon | Picasso's Blue Period
+Animation > Walt Disney | Studio Ghibli | Hayao Miyazaki | Computer animation | Pixar | Anime
+Film genre > Western (genre) | Horror film | Comedy film | Drama (film and television) | Science fiction film | Musical film | Film noir
+Science fiction > Isaac Asimov | Jules Verne | H. G. Wells | Frankenstein | Dune (novel) | Nineteen Eighty-Four | Arthur C. Clarke | Philip K. Dick | Ursula K. Le Guin | Cyberpunk
+Fantasy > J. R. R. Tolkien | The Lord of the Rings | The Hobbit | Harry Potter | C. S. Lewis | Ents
+Fairy tale > Brothers Grimm | Hans Christian Andersen | Cinderella | Snow White | Little Red Riding Hood | Charles Perrault
+Folklore > Urban legend | Trickster | Nasreddin | Folk hero | Oral tradition
+Festival > Diwali | Christmas | Eid al-Fitr | Chinese New Year | Nowruz | Halloween | Hanukkah | Holi | Oktoberfest
+Christmas > Christmas tree | Santa Claus | Advent
+Tree worship > Sacred trees | Druid | Kalpavriksha | Banyan

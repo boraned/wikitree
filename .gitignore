@@ -5,3 +5,4 @@ dist/
 Thumbs.db
 *.tmp
 releases/
+web-dist/

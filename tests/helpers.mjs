@@ -22,14 +22,31 @@ export function finish() {
   console.log('\nall passed');
 }
 
-export async function launch({ offline = false } = {}) {
-  const args = [ROOT, '--no-sandbox'];
-  const env = { ...process.env, WIKITREE_HOME: HOME };
+/** Tests start from an empty data folder unless they ask for the first-launch example project. */
+function skipExample(home) {
+  const file = path.join(home, 'settings.json');
+  let settings = {};
+  try { settings = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { /* new home */ }
+  if (settings.exampleOffered) return;
+  fs.mkdirSync(home, { recursive: true });
+  fs.writeFileSync(file, JSON.stringify({ ...settings, exampleOffered: true }));
+}
+
+export async function launch({ offline = false, example = false, home = HOME } = {}) {
+  if (!example) skipExample(home);
+  const executablePath = process.env.WIKITREE_TEST_EXECUTABLE || require('electron');
+  const args = process.env.WIKITREE_TEST_EXECUTABLE ? ['--no-sandbox'] : [ROOT, '--no-sandbox'];
+  const env = { ...process.env, WIKITREE_HOME: home };
+  // Electron otherwise prefers the real Wayland session even when xvfb-run provides DISPLAY.
+  if (offline || (process.platform === 'linux' && !process.env.WIKITREE_TEST_HEADED)) {
+    args.push('--ozone-platform=x11');
+    delete env.WAYLAND_DISPLAY;
+  }
   if (offline) {
-    args.push('--ozone-platform=x11', '--disable-gpu');
+    args.push('--disable-gpu');
     env.ELECTRON_DISABLE_SANDBOX = '1';
   }
-  const app = await electron.launch({ executablePath: require('electron'), args, env });
+  const app = await electron.launch({ executablePath, args, env });
   const win = await app.firstWindow();
   win.on('pageerror', (e) => fails.push(`page error: ${e}`));
   return { app, win };
@@ -68,7 +85,7 @@ export function overlaps(win) {
 export async function pick(win, { lang, q, header }) {
   await win.waitForSelector('.modal .picker');
   if (header) {
-    await win.click('.modal .tab >> text=Header');
+    await win.click('.modal .tab-header');
     await win.fill('.modal .pop-input', header);
     await win.press('.modal .pop-input', 'Enter');
   } else {

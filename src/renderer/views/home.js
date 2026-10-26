@@ -3,10 +3,12 @@ import { api, showError } from '../lib/api.js';
 import { navigate } from '../app.js';
 import { h, timeAgo, icon } from '../lib/dom.js';
 import { pickNode, confirmDialog } from '../lib/modal.js';
+import { themeButton } from '../lib/theme.js';
 
 export async function renderHome(root) {
   const grid = h('div', { class: 'grid' });
   const view = h('div', { class: 'home' },
+    themeButton('home-theme'),
     h('header', { class: 'brand' },
       h('img', { class: 'globe', src: 'assets/img/wikipedia-globe.svg', alt: '' }),
       h('h1', { class: 'wordmark' }, 'WikiTree'),
@@ -29,7 +31,7 @@ export async function renderHome(root) {
 
   const projects = await api.projects();
   for (const p of projects) {
-    const thumbs = h('div', { class: `collage n${Math.min(p.thumbs.length, 4)}` },
+    const thumbs = h('div', { class: `collage n${Math.min(p.thumbs.length, 6)}` },
       ...p.thumbs.map((src) => h('img', { src, alt: '', loading: 'lazy' })));
     if (!p.thumbs.length) thumbs.append(h('img', { class: 'collage-empty', src: 'assets/img/wikipedia-globe.svg', alt: '' }));
 

@@ -17,6 +17,14 @@ export const setLang = (l) => { lang = l; api.setSetting('lang', l).catch(() => 
 
 export const isOffline = (e) => !navigator.onLine || /internet/i.test(e?.message || '');
 
+// ---------- attached files ----------
+export const fileUrl = (projectId, file) => api.fileUrl?.(projectId, file) || `wikitree://file/${projectId}/${file}`;
+export const DOC_KINDS = ['pdf', 'markdown', 'text', 'code', 'unsupported'];
+/** Every attachment has a safe in-app viewer; no file is executed or opened by the OS. */
+export const isOpenable = (n) => n?.type === 'wiki' || n?.type === 'file' || n?.type === 'web';
+/** Web nodes only ever load http(s) pages: never the app's own origin. */
+export const isWebUrl = (u) => { try { return /^https?:$/.test(new URL(u).protocol); } catch { return false; } };
+
 // Summaries are reused by link previews and node creation.
 const summaryCache = new Map();
 export function cachedSummary(title, lang = 'en') {

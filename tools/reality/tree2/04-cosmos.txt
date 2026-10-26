@@ -1,0 +1,33 @@
+# ---------- 4. What feeds a tree: sunlight → the Sun → the Solar System → the universe ----------
+Sunlight > Sun | Solar irradiance | Daylight | Solar energy | Visible spectrum | Day | Sky
+Sun > Solar core | Photosphere | Stellar corona | Sunspot | Solar flare | Solar wind | Solar cycle | Solar eclipse | Heliosphere | Solar System | Star
+Solar System > Formation and evolution of the Solar System | Planet | Mercury (planet) | Venus | Earth | Mars | Jupiter | Saturn | Uranus | Neptune | Dwarf planet | Pluto | Ceres (dwarf planet) | Asteroid belt | Kuiper belt | Oort cloud | Comet | Asteroid | Meteoroid | Natural satellite | Planetary ring | Exploration of the Solar System
+Planet > Terrestrial planet | Gas giant | Ice giant | Exoplanet | Planetary habitability | Planetary science | Nebular hypothesis | Rogue planet
+Mars > Olympus Mons | Water on Mars | Moons of Mars | Mars rover | Colonization of Mars
+Jupiter > Great Red Spot | Galilean moons | Europa (moon) | Io (moon) | Ganymede (moon) | Callisto (moon)
+Saturn > Rings of Saturn | Titan (moon) | Enceladus
+Venus > Atmosphere of Venus | Transit of Venus
+Comet > Halley's Comet | Comet tail
+Asteroid > Near-Earth object | Asteroid impact avoidance | Chicxulub crater | Meteorite
+Exoplanet > Methods of detecting exoplanets | Kepler space telescope | Habitable zone | Hot Jupiter | Super-Earth | TRAPPIST-1
+Star > Stellar evolution | Stellar classification | Hertzsprung–Russell diagram | Main sequence | Red giant | White dwarf | Neutron star | Pulsar | Supernova | Black hole | Nebula | Star formation | Binary star | Variable star | Nucleosynthesis | Constellation | Proxima Centauri | Sirius | Betelgeuse | Galaxy
+Black hole > Event horizon | Sagittarius A* | Hawking radiation | Supermassive black hole | Accretion disk | Quasar
+Nebula > Orion Nebula | Crab Nebula | Planetary nebula | Molecular cloud | Interstellar medium
+Constellation > Orion (constellation) | Ursa Major | Zodiac | Polaris | Asterism (astronomy)
+Galaxy > Milky Way | Andromeda Galaxy | Spiral galaxy | Elliptical galaxy | Irregular galaxy | Galaxy cluster | Local Group | Galaxy formation and evolution | Active galactic nucleus | Dark matter halo | Observable universe
+Milky Way > Galactic Center | Orion Arm | Galactic year | Magellanic Clouds
+Observable universe > Universe | Cosmic microwave background | Large-scale structure of the universe | Galaxy filament | Void (astronomy) | Hubble's law | Redshift | Light-year | Parsec
+Universe > Cosmology | Big Bang | Chronology of the universe | Expansion of the universe | Dark energy | Inflation (cosmology) | Ultimate fate of the universe | Heat death of the universe | Big Crunch | Multiverse | Shape of the universe | Age of the universe | Fine-tuned universe | Anthropic principle
+Cosmology > Physical cosmology | Lambda-CDM model | Friedmann equations | Cosmological constant | Edwin Hubble | Georges Lemaître | Steady-state model | Baryogenesis
+Big Bang > Big Bang nucleosynthesis | Recombination (cosmology) | Planck units | Cosmic inflation | Reionization
+Star > Astronomy
+Astronomy > History of astronomy | Observational astronomy | Radio astronomy | Astrometry | Astrobiology | Celestial mechanics | Astronomer | Observatory | Space telescope | Hubble Space Telescope | James Webb Space Telescope | Nicolaus Copernicus | Johannes Kepler | Tycho Brahe | Heliocentrism | Geocentric model | Kepler's laws of planetary motion | Archaeoastronomy
+Astrobiology > Search for extraterrestrial intelligence | Fermi paradox | Drake equation | Extraterrestrial life | Panspermia | Abiogenesis
+Exploration of the Solar System > Outer space | Spaceflight | Space exploration | Space Race | NASA | Sputnik 1 | Yuri Gagarin | Voyager program | Voyager 1 | International Space Station | Space probe | Rocket | Artificial satellite | SpaceX | Human spaceflight | Space station | European Space Agency | Roscosmos | China National Space Administration | ISRO
+Outer space > Kármán line | Low Earth orbit | Geostationary orbit | Interplanetary space | Interstellar space | Intergalactic space | Microgravity | Space debris | Space weather
+Apollo program > Apollo 11 | Neil Armstrong | Saturn V
+Rocket > Rocket engine | Orbital mechanics | Escape velocity | Launch vehicle | Konstantin Tsiolkovsky | Wernher von Braun
+Artificial satellite > Satellite navigation | Global Positioning System | Communications satellite | Weather satellite | Earth observation satellite
+Day > Night | Sunrise | Sunset | Twilight | Solar time | Day length
+Sky > Rayleigh scattering | Rainbow | Starlight | Light pollution
+Solar energy > Photovoltaics | Solar panel | Solar power | Concentrated solar power | Solar thermal energy

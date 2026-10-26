@@ -2,8 +2,8 @@
   "name": "wikitree",
   "productName": "WikiTree",
   "desktopName": "wikitree.desktop",
-  "version": "1.1.0",
-  "description": "Build trees of Wikipedia articles and read them in place \u2014 a desktop app for Linux, Windows and macOS.",
+  "version": "2.1.0",
+  "description": "Build trees of Wikipedia articles and read them in place — a desktop app for Linux, Windows and macOS.",
   "keywords": [
     "wikipedia",
     "mind-map",
@@ -33,6 +33,10 @@
     "test": "node tests/run.mjs",
     "test:offline": "node tests/run.mjs --offline",
     "screenshots": "node scripts/screenshots.mjs",
+    "build:web": "node scripts/build-web.mjs",
+    "build:highlighter": "node scripts/build-highlighter.mjs",
+    "build:docx": "node scripts/build-docx.mjs",
+    "test:web": "npm run build:web && node tests/webapp.test.mjs",
     "dist": "electron-builder",
     "dist:linux": "electron-builder --linux AppImage",
     "dist:win": "electron-builder --win portable",
@@ -86,8 +90,12 @@
     }
   },
   "devDependencies": {
+    "docx-preview": "^0.4.1",
     "electron": "^45.0.0",
     "electron-builder": "^26.15.3",
+    "esbuild": "^0.28.2",
+    "highlight.js": "^11.12.0",
+    "jszip": "^3.10.2",
     "playwright-core": "^1.64.1"
   }
 }

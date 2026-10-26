@@ -15,7 +15,7 @@ jobs:
           node-version: 22
           cache: npm
       - name: System libraries for Electron + virtual display
-        run: sudo apt-get update && sudo apt-get install -y xvfb libgtk-3-0 libnss3 libasound2t64 libgbm1
+        run: sudo apt-get update && sudo apt-get install -y xvfb libgtk-3-0 libnss3 libasound2t64 libgbm1 ffmpeg imagemagick fonts-dejavu-core
       - run: npm ci --include=dev
       - name: Check syntax
         run: for f in $(git ls-files '*.js' '*.mjs' '*.cjs'); do node --check "$f" || exit 1; done

@@ -4,6 +4,7 @@
 //   projects/<id>/project.json   the tree — whole-file writes, last writer wins
 //   projects/<id>/pages/*.json   downloaded articles (cleaned HTML)
 //   projects/<id>/media/*        images used by downloaded articles
+//   projects/<id>/files/*        files the user attached (images, video, audio, PDFs, text)
 //   settings.json                small preferences (last search language)
 // Nothing else from Wikipedia is written to disk: see http.js.
 import fss, { promises as fs } from 'node:fs';
@@ -51,6 +52,7 @@ export const projectDir = (id) => path.join(dirs.data, checkId(id));
 export const projectFile = (id) => path.join(projectDir(id), 'project.json');
 export const pagesDir = (id) => path.join(projectDir(id), 'pages');
 export const mediaDir = (id) => path.join(projectDir(id), 'media');
+export const filesDir = (id) => path.join(projectDir(id), 'files');
 
 export const sha = (s) => crypto.createHash('sha1').update(s).digest('hex');
 export const newId = () => crypto.randomBytes(6).toString('hex');

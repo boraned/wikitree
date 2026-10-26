@@ -4,10 +4,14 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { initDirs, validId, mediaDir, removeLegacyCaches, readSettings, writeSetting } from './paths.js';
+import { initDirs, validId, checkId, mediaDir, removeLegacyCaches, readSettings, writeSetting } from './paths.js';
 import * as projects from './projects.js';
 import * as wikipedia from './wikipedia.js';
 import * as offline from './offline.js';
+import * as files from './files.js';
+import * as history from './history.js';
+import { seedExample } from './example.js';
+import * as web from './web.js';
 import { PARTITION, memorySession } from './http.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -36,24 +40,37 @@ for (const d of fs.readdirSync(SESSION_ROOT)) {
 app.commandLine.appendSwitch('disable-gpu-shader-disk-cache');
 
 protocol.registerSchemesAsPrivileged([
-  { scheme: 'wikitree', privileges: { standard: true, secure: true, supportFetchAPI: true } },
+  { scheme: 'wikitree', privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true, corsEnabled: true } },
 ]);
 
 // ---------- IPC ----------
+const decoderFor = (sender) => (request) => sender.executeJavaScript(
+  `import('wikitree://app/lib/file-validation.js').then(m => m.validateAttachmentUrl(${JSON.stringify(request)}))`);
 const handlers = {
   'projects:list': () => projects.listProjects(),
-  'projects:create': (root) => projects.createProject(root),
+  'projects:create': (root, sender) => projects.createProject(root, decoderFor(sender)),
   'projects:get': (id) => projects.getProject(id),
   'projects:save': (p) => projects.saveProject(p),
   'projects:delete': (id) => projects.deleteProject(id),
+  'history:list': ({ projectId, beforeSeq, limit }) => history.listHistory(checkId(projectId), beforeSeq, Math.min(Number(limit) || 100, 500)),
+  'history:snapshot': ({ projectId, seq }) => history.snapshotAt(checkId(projectId), Number(seq)),
+  'history:restore': ({ projectId, seq }) => projects.restoreSnapshot({ projectId: checkId(projectId), seq: Number(seq) }),
   'wiki:search': (a) => wikipedia.search(a),
   'wiki:summary': (a) => wikipedia.summary(a),
   'wiki:page': (a) => wikipedia.page(a),
   'wiki:namespaces': (lang) => wikipedia.namespaces(lang),
+  'web:search': (a) => web.search(a),
+  'web:info': (url) => web.pageInfo(url),
   'offline:save': (a) => offline.savePage(a),
   'offline:remove': (a) => offline.removePage(a),
   'offline:state': (a) => offline.savedState(a),
-  'settings:set': ({ key, value }) => (key === 'lang' ? writeSetting('lang', String(value)) : null),
+  'files:import': (a, sender) => files.importFile(a, decoderFor(sender)),
+  'files:collect': (projectId) => files.collectFiles(projectId),
+  'settings:set': ({ key, value }) => {
+    if (key === 'lang') return writeSetting('lang', String(value));
+    if (key === 'theme' && (value === 'light' || value === 'dark')) return writeSetting('theme', value);
+    return null;
+  },
   'open-external': (url) => { if (/^https?:\/\//.test(url)) shell.openExternal(url); },
 };
 
@@ -61,7 +78,7 @@ function registerIpc() {
   // Errors cross IPC as values so the renderer gets clean messages.
   for (const [name, fn] of Object.entries(handlers)) {
     ipcMain.handle(name, async (_e, arg) => {
-      try { return { ok: true, value: await fn(arg) }; } catch (e) { return { ok: false, error: e.message }; }
+      try { return { ok: true, value: await fn(arg, _e.sender) }; } catch (e) { return { ok: false, error: e.message }; }
     });
   }
   // Synchronous save while a window closes, so the last change is never lost.
@@ -71,7 +88,10 @@ function registerIpc() {
   ipcMain.on('settings:get', (e) => { e.returnValue = readSettings(); });
 }
 
-// ---------- app protocol: wikitree://app/… (UI) and wikitree://media/<project>/<file> (offline images) ----------
+// ---------- app protocol ----------
+//   wikitree://app/…                  the UI
+//   wikitree://media/<project>/<file> images of downloaded articles
+//   wikitree://file/<project>/<file>  attached files (range requests for video/audio)
 function serveFile(base, rel) {
   const file = path.normalize(path.join(base, rel));
   if (!file.startsWith(base + path.sep)) return new Response('Forbidden', { status: 403 });
@@ -83,10 +103,16 @@ function registerProtocol() {
   memorySession().protocol.handle('wikitree', (req) => {
     const u = new URL(req.url);
     const rel = decodeURIComponent(u.pathname);
+    if (u.host === 'import') return files.serveImportFile(rel.slice(1), req);
     if (u.host === 'media') {
       const [, pid, file] = rel.split('/');
       if (!validId(pid) || !/^[\w.]+$/.test(file || '')) return new Response('Not found', { status: 404 });
       return serveFile(mediaDir(pid), file);
+    }
+    if (u.host === 'file') {
+      const [, pid, file] = rel.split('/');
+      if (!validId(pid) || !/^[a-z0-9]+\.[a-z0-9]+$/.test(file || '')) return new Response('Not found', { status: 404 });
+      return files.serveProjectFile(pid, file, req);
     }
     return serveFile(RENDERER, rel);
   });
@@ -100,7 +126,7 @@ function createWindow() {
     minWidth: 720,
     minHeight: 500,
     title: 'WikiTree',
-    backgroundColor: '#1c1c1e',
+    backgroundColor: readSettings().theme === 'light' ? '#f6f6f7' : '#1c1c1e',
     icon: ICON,
     autoHideMenuBar: true,
     webPreferences: {
@@ -110,6 +136,7 @@ function createWindow() {
       nodeIntegration: false,
       partition: PARTITION,
       spellcheck: false,
+      plugins: true, // built-in PDF viewer for attached PDFs
     },
   });
   // Never leave the app: in-window navigation is blocked, external links open in the system browser.
@@ -144,9 +171,11 @@ app.whenReady().then(async () => {
   session.defaultSession.setSpellCheckerEnabled(false); // no dictionary download
   await initDirs(app.getPath('userData'));
   await projects.migrateLegacy();
+  await seedExample().catch((e) => console.error('example project', e.message));
   await removeLegacyCaches();
   registerIpc();
   registerProtocol();
+  web.allowFraming(memorySession());
   buildMenu();
   createWindow();
   app.on('activate', () => BrowserWindow.getAllWindows().length || createWindow());

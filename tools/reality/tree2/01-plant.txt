@@ -1,0 +1,56 @@
+# Reality tree, variation #2: reality explained outward from a single tree.
+# Format: "Parent > child | child | …". Every title is an English Wikipedia article; a parent must already
+# appear (as the root or as an earlier child). Order inside a line is the order the children are placed.
+# A parent keeps at most two children. design.mjs keeps an article's two largest topics on it and hands every
+# further child down into the branch it is most related to. The top of the tree is written out in pairs:
+# the living tree and the abstract tree; what a plant is and what is made of it; and onward. A pair written
+# this way is kept exactly; longer lines are arranged by design.mjs.
+
+Tree > Plant | Tree (graph theory)
+Plant > Botany | Wood
+Botany > Evolution | Forest
+Evolution > Life | Human
+Human > Human body | People
+People > Society | World tree
+Forest > Ecosystem | Fruit
+Ecosystem > Sunlight
+Sunlight > Photosynthesis
+Wood > Lumber | Fire
+Lumber > Woodworking | Wood fibre
+Wood fibre > Paper
+Fire > Combustion | Prehistory
+Combustion > Matter | Energy
+Prehistory > History | Writing
+Tree (graph theory) > Mathematics | Tree (data structure)
+
+# ---------- 1. What a tree is: a plant ----------
+Plant > Botany | Plant cell | Leaf | Root | Plant stem | Flower | Seed | Plant reproduction | Plant hormone | Vascular plant | Flowering plant | Conifer | Moss | Fern | Plant ecology
+Botany > History of botany | Plant physiology | Plant anatomy | Plant taxonomy | Ethnobotany | Paleobotany | Phytochemistry | Plant pathology | Plant genetics | Herbarium | Botanical garden | Carl Linnaeus
+Plant cell > Cell wall | Cellulose | Chloroplast | Vacuole | Plastid | Plasmodesma | Lignin | Meristem | Parenchyma | Collenchyma | Sclerenchyma
+Photosynthesis > Chlorophyll | Light-dependent reactions | Calvin cycle | Carbon fixation | C4 carbon fixation | Crassulacean acid metabolism | Photosystem | RuBisCO | Glucose | Oxygen | Carbon dioxide | Photorespiration | Evolution of photosynthesis | Artificial photosynthesis
+Leaf > Stoma | Transpiration | Leaf shape | Phyllotaxis | Autumn leaf color | Deciduous | Evergreen | Petiole (botany) | Mesophyll tissue | Leaf vein
+Root > Root hair | Taproot | Mycorrhiza | Rhizosphere | Root nodule | Nitrogen fixation | Aerial root | Root pressure
+Plant stem > Xylem | Phloem | Bark (botany) | Vascular cambium | Cork cambium | Trunk (botany) | Branch | Secondary growth | Tree ring | Sap
+Flower > Pollination | Pollen | Stamen | Gynoecium | Petal | Nectar | Inflorescence | Pollinator | Flower colour
+Seed > Seed dispersal | Germination | Embryo | Endosperm | Seed bank | Dormancy | Cotyledon | Nut (fruit) | Cone (botany)
+Plant reproduction > Sexual reproduction in plants | Vegetative reproduction | Alternation of generations | Gametophyte | Sporophyte | Spore | Grafting | Cloning
+Plant hormone > Auxin | Gibberellin | Cytokinin | Abscisic acid | Ethylene | Phototropism | Gravitropism | Circadian rhythm
+Vascular plant > Lycophyte | Gymnosperm | Tracheid | Vessel element | Embryophyte
+Flowering plant > Monocotyledon | Eudicots | Rosids | Asterids | Poaceae | Fabaceae | Rosaceae | Orchidaceae | Asteraceae | Fagaceae | Myrtaceae | Arecaceae
+Conifer > Pinaceae | Pine | Spruce | Fir | Larch | Cedrus | Cupressaceae | Sequoioideae | Taxus | Araucaria | Ginkgo biloba | Cycad
+Moss > Bryophyte | Liverwort | Hornwort | Sphagnum | Peat
+Fern > Horsetail | Frond | Tree fern | Psilotum
+Plant ecology > Plant community | Allelopathy | Plant defense against herbivory | Epiphyte | Parasitic plant | Carnivorous plant | Succulent plant | Halophyte | Xerophyte | Hydrophyte | Plant–animal interaction
+Fagaceae > Oak | Beech | Chestnut
+Rosaceae > Apple | Cherry | Rose | Pear | Plum
+Myrtaceae > Eucalyptus | Clove
+Arecaceae > Coconut | Date palm | Oil palm
+Trunk (botany) > Heartwood | Sapwood | Buttress root | Burl
+Tree ring > Dendrochronology | Dendroclimatology | Growth ring
+Sequoioideae > Sequoiadendron giganteum | Sequoia sempervirens | Metasequoia
+Pine > Pinus longaeva | Pine nut | Resin | Turpentine | Amber
+Oak > Acorn | Quercus robur | Cork oak | Gall
+Poaceae > Bamboo | Wheat | Rice | Maize | Sugarcane
+Fabaceae > Legume | Soybean | Acacia | Peanut
+Deciduous > Abscission
+Seed dispersal > Anemochory | Zoochory | Hydrochory | Myrmecochory

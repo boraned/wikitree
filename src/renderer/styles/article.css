@@ -88,3 +88,11 @@
 @media (max-width: 760px) {
   .wiki-body table.infobox, .wiki-body figure[typeof~="mw:File/Thumb"] { float: none; margin: 0 0 18px; width: 100% !important; max-width: 100%; }
 }
+
+/* ---------- light appearance ---------- */
+[data-theme="light"] .wiki-body { color: #202122; }
+[data-theme="light"] .wiki-body blockquote { color: #3c3c41; }
+[data-theme="light"] .wiki-body a.wl.in-tree { color: #1e8a44; }
+[data-theme="light"] .wiki-body a.ext { color: #4b5566; }
+[data-theme="light"] .wiki-body table.infobox { color: #202122; background: #f8f9fa !important; }
+[data-theme="light"] .wiki-body .clade, [data-theme="light"] .wiki-body .clade * { color: #202122; border-color: #a2a9b1 !important; }

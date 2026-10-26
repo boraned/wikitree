@@ -1,0 +1,78 @@
+# ---------- Deeper rings: matter, Earth and sky ----------
+Carbon > Graphite | Graphene | Fullerene | Carbon nanotube | Allotropes of carbon | Carbon-14 | Organic compound
+Hydrogen > Hydrogen atom | Hydrogen fuel | Deuterium | Tritium | Hydrogen economy
+Oxygen > Ozone | Oxygen cycle | Oxidation | Joseph Priestley
+Iron > Iron ore | Smelting | Rust | Cast iron | Wrought iron | Blast furnace
+Gold > Gold rush | Gold mining | Gold reserve | California gold rush
+Silver > Sterling silver | Silver nitrate
+Copper > Bronze | Brass | Copper wire
+Uranium > Enriched uranium | Uranium mining | Uranium-235
+Steel > Stainless steel | Bessemer process | Steelmaking | Steel mill
+Glass > Glassblowing | Stained glass | Optical fiber | Obsidian | Soda–lime glass
+Plastic > Polyethylene | Polyvinyl chloride | Nylon | Bioplastic | Microplastics | Bakelite
+Polymer > Monomer | Biopolymer | Synthetic fiber | Elastomer
+Ceramic > Pottery | Porcelain | Earthenware | Kiln
+Light > Visible spectrum | Luminosity | Bioluminescence | Light-emitting diode | Incandescent light bulb | Optics
+Electricity > History of electromagnetic theory | Static electricity | Alternating current | Direct current | Electric motor | Electric generator | Transformer | Benjamin Franklin | Alessandro Volta | André-Marie Ampère | Georg Ohm | War of the currents
+Magnetism > Magnet | Compass | Electromagnet | Magnetosphere | Magnetic resonance
+Nuclear power > Chernobyl disaster | Fukushima nuclear accident | Three Mile Island accident | Nuclear fusion power | ITER | Radioactive waste
+Laser > Laser cutting | Laser pointer | Lidar | Theodore Maiman
+Speed of light > Michelson–Morley experiment | Faster-than-light | Light cone
+Black hole > Stephen Hawking | M87* | Event Horizon Telescope | Black hole information paradox | Wormhole
+Higgs boson > Higgs mechanism | Peter Higgs | Mass generation
+Quantum entanglement > Bell's theorem | EPR paradox | Quantum teleportation | Quantum cryptography
+Glacier > Ice cap | Glacial period | Moraine | Fjord | Retreat of glaciers since 1850 | Iceberg
+Desert > Sahara | Gobi Desert | Arabian Desert | Atacama Desert | Antarctic desert | Oasis | Desertification | Kalahari Desert
+Island > Greenland | New Guinea | Borneo | Madagascar | Iceland | Galápagos Islands | Archipelago | Volcanic island
+Antarctica > South Pole | Antarctic Treaty System | Antarctic ice sheet | Roald Amundsen | Ernest Shackleton
+Lake > Lake Baikal | Caspian Sea | Great Lakes | Lake Victoria | Dead Sea | Lake Titicaca
+Cave > Stalactite | Stalagmite | Karst | Speleology
+Tsunami > 2004 Indian Ocean earthquake and tsunami | 2011 Tōhoku earthquake and tsunami
+Mount Everest > Tenzing Norgay | Edmund Hillary | Sherpa people | Death zone
+Tropical cyclone > Hurricane Katrina | Eye (cyclone) | Saffir–Simpson scale | Typhoon
+Cloud > Cumulus cloud | Cirrus cloud | Stratus cloud | Cumulonimbus cloud | Cloud physics
+Lightning > Thunder | Ball lightning | Lightning rod
+Season > Spring (season) | Summer | Autumn | Winter | Equinox | Solstice | Axial tilt
+Moon landing > Apollo 13 | Lunar Module | Lunar rover | Artemis program
+Mars rover > Curiosity (rover) | Perseverance (rover) | Sojourner (rover) | Spirit (rover) | Opportunity (rover)
+Hubble Space Telescope > Hubble Deep Field | Pillars of Creation | Hubble Ultra-Deep Field
+James Webb Space Telescope > Webb's First Deep Field | Lagrange point
+International Space Station > Expedition 1 | Mir | Tiangong space station
+Supernova > SN 1987A | SN 1054 | Type Ia supernova | Supernova remnant
+Neutron star > Magnetar | Neutron star merger | GW170817
+Andromeda Galaxy > Andromeda–Milky Way collision | Triangulum Galaxy
+Cosmic microwave background > Arno Penzias | Robert Woodrow Wilson | Planck (spacecraft) | Wilkinson Microwave Anisotropy Probe
+Big Bang > Grand unification epoch | Planck epoch | Quark epoch | Photon epoch
+Dark energy > Accelerating expansion of the universe | Quintessence (physics)
+Dark matter > Weakly interacting massive particle | Axion | MOND | Galaxy rotation curve | Bullet Cluster
+Solar eclipse > Total solar eclipse | Annular solar eclipse | Saros cycle
+Comet > Comet Shoemaker–Levy 9 | Hale–Bopp | Rosetta (spacecraft)
+Pluto > New Horizons | Charon (moon) | Clyde Tombaugh
+Voyager 1 > Pale Blue Dot | Voyager Golden Record | Carl Sagan
+# ---------- Deeper rings: people and their ideas ----------
+Isaac Newton > Philosophiæ Naturalis Principia Mathematica | Opticks | Newton's cannonball | Newton's law of cooling
+Albert Einstein > Annus mirabilis papers | Photoelectric effect | Brownian motion | Einstein–Szilard letter | Einstein field equations
+Charles Darwin > HMS Beagle | Darwin's finches | The Descent of Man | Alfred Russel Wallace | Galápagos Islands
+Galileo Galilei > Galileo affair | Sidereus Nuncius | Dialogue Concerning the Two Chief World Systems | Galilean moons
+Marie Curie > Radium | Polonium | Pierre Curie | Radioactivity
+Plato > The Republic (Plato) | Theory of forms | Allegory of the cave | Symposium (Plato) | Platonic love | Neoplatonism
+Aristotle > Nicomachean Ethics | Organon | Four causes | Golden mean (philosophy) | Peripatetic school | Lyceum
+Socrates > Socratic method | Trial of Socrates | Apology (Plato) | Socratic dialogue
+Confucius > Analects | Ren (Confucianism) | Neo-Confucianism | Filial piety
+Immanuel Kant > Critique of Pure Reason | Transcendental idealism | Critique of Judgment | Perpetual peace
+Friedrich Nietzsche > Thus Spoke Zarathustra | Übermensch | Will to power | God is dead | Eternal return
+Karl Marx > The Communist Manifesto | Marxism | Historical materialism | Class conflict | Friedrich Engels
+Sigmund Freud > Id, ego and superego | Oedipus complex | Psychoanalytic theory | Defence mechanism
+Leonardo da Vinci > The Last Supper (Leonardo) | Vitruvian Man | Codex Leicester
+William Shakespeare > Hamlet | Romeo and Juliet | Macbeth | King Lear | Othello | Shakespeare's sonnets | Globe Theatre
+Alan Turing > Turing completeness | Enigma machine | Cryptanalysis of the Enigma | Bletchley Park | Halting problem
+Ada Lovelace > Note G
+Mahatma Gandhi > Satyagraha | Salt March | Indian independence movement
+Nelson Mandela > Apartheid | African National Congress | Robben Island
+Mustafa Kemal Atatürk > Turkish War of Independence | Atatürk's reforms | Republic of Turkey | Kemalism
+Genghis Khan > Mongol invasions and conquests | Kublai Khan | Yuan dynasty | Golden Horde
+Alexander the Great > Wars of Alexander the Great | Battle of Gaugamela | Hellenistic period | Alexandria
+Julius Caesar > Assassination of Julius Caesar | Gallic Wars | Crossing the Rubicon | Julian calendar
+Napoleon > Napoleonic Code | Battle of Waterloo | Battle of Austerlitz | French invasion of Russia | First French Empire
+Christopher Columbus > Voyages of Christopher Columbus | Santa María (ship) | Columbus Day
+Johannes Gutenberg > Gutenberg Bible | Printing revolution

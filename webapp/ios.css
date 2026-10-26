@@ -1,0 +1,55 @@
+/* iPad/iPhone adaptations for the shared desktop renderer. */
+html, body { height: 100%; height: 100dvh; overscroll-behavior: none; }
+body { padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+button, .node, .card { -webkit-tap-highlight-color: transparent; }
+button { touch-action: manipulation; }
+/* The installed app's status bar text is white, so keep a dark strip behind it in light mode. */
+[data-theme="light"] body::before { content: ''; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top); background: #1c1c1e; z-index: 200; }
+
+@media (max-width: 760px) {
+  .home { padding: 5vh 18px 30px; }
+  .brand { margin-bottom: 30px; }
+  .globe { width: 112px; height: 112px; }
+  .wordmark { font-size: 43px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 12px; }
+  .new-card { min-height: 120px; }
+  .topbar { height: 58px; padding-inline: 8px; gap: 7px; }
+  .icon-btn { width: 44px; height: 44px; border-radius: 12px; }
+  .reader .back { width: auto; min-width: 44px; padding-inline: 8px; }
+  .reader .back::after { content: 'Back'; }
+  .crumb { padding-inline: 5px; max-width: 34vw; }
+  .reader-grid { display: block; padding: 20px 18px 80px; }
+  .article { max-width: 100%; }
+  .page-title { font-size: clamp(28px, 8vw, 40px); }
+  .picker { --picker-body: min(36vh, 260px); }
+  .browse-files { min-height: 46px; }
+  .modal { width: min(480px, calc(100vw - 24px)); }
+}
+
+@media (hover: none) {
+  .node .del, .card-del { opacity: 1; }
+}
+
+@media (max-width: 440px) {
+  .home { padding-inline: 14px; }
+  .grid { grid-template-columns: 1fr; }
+  .card:not(.new-card) { display: grid; grid-template-columns: 112px 1fr; min-height: 92px; }
+  .collage { height: 100%; min-height: 92px; }
+  .card-body { align-self: center; min-width: 0; }
+  .card-title { overflow: hidden; text-overflow: ellipsis; }
+  .reader .topbar { gap: 4px; }
+  .reader .back { font-size: 0; }
+  .reader .back::after { content: 'Back'; font-size: 14px; }
+  .crumbs { flex: 1; }
+  .crumb { max-width: 28vw; }
+  .input-row { flex-wrap: wrap; }
+  .lang { max-width: 44%; }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .home { padding-top: 16px; }
+  .brand { flex-direction: row; gap: 14px; margin-bottom: 16px; }
+  .globe { width: 54px; height: 54px; }
+  .wordmark { margin: 0; font-size: 36px; }
+  .picker { --picker-body: 180px; }
+}

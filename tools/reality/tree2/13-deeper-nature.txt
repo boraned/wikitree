@@ -1,0 +1,85 @@
+# ---------- Deeper rings: nature ----------
+Apple > Malus sieversii | Apple cultivars | Cider | Apple pie | Johnny Appleseed | Isaac Newton's apple tree | Apple scab
+Cherry > Prunus avium | Cherry blossom | Hanami | Sour cherry
+Bamboo > Giant panda | Bamboo forest | Bamboo construction | Moso bamboo
+Wheat > Domestication of wheat | Emmer | Durum | Flour | Gluten | Bread wheat
+Rice > Oryza sativa | Paddy field | Sake | Basmati
+Maize > Teosinte | Popcorn | Tortilla | Corn syrup
+Eucalyptus > Koala | Eucalyptus oil | Eucalyptus regnans
+Ginkgo biloba > Living fossil | Ginkgoales
+Coconut > Copra | Coconut milk | Coconut water | Coir
+Olive > Olive oil | Olea europaea | Olive branch | Olive leaf
+Grape > Vitis vinifera | Viticulture | Raisin | Vineyard
+Citrus > Lemon | Lime (fruit) | Grapefruit | Mandarin orange | Citron | Pomelo
+Banana > Cavendish banana | Plantain (cooking) | Banana republic | Panama disease
+Mango > Mangifera indica | Alphonso mango
+Orchidaceae > Vanilla | Vanilla planifolia | Orchid mycorrhiza | Bee orchid
+Rose > Rose hip | Rose oil | Garden roses | Wars of the Roses
+Succulent plant > Cactus | Aloe | Agave | Sedum
+Cactus > Saguaro | Opuntia | Cactus spine
+Carnivorous plant > Venus flytrap | Pitcher plant | Sundew | Bladderwort
+Mycorrhiza > Wood wide web | Arbuscular mycorrhiza | Ectomycorrhiza
+Pollination > Wind pollination | Self-pollination | Hand-pollination | Pollination syndrome | Pollinator decline
+Sequoiadendron giganteum > General Sherman (tree) | Sequoia National Park | Giant Forest
+Pinus longaeva > Prometheus (tree) | White Mountains (California)
+Amazon rainforest > Amazon basin | Amazon River dolphin | Jaguar | Harpy eagle | Uncontacted peoples | Brazil nut | Rubber tree
+Mangrove > Sundarbans | Mangrove forest | Bengal tiger
+Wildfire > Fire ecology | Prescribed burn | Fire regime | Serotiny | Black Summer
+# animals
+Ant > Ant colony | Leafcutter ant | Army ant | Fire ant | Ant–fungus mutualism | Myrmecology | Pheromone
+Butterfly > Monarch butterfly | Caterpillar | Pupa | Lepidoptera | Butterfly effect | Monarch butterfly migration
+Shark > Great white shark | Whale shark | Hammerhead shark | Megalodon | Shark finning | Electroreception
+Whale > Blue whale | Humpback whale | Sperm whale | Orca | Whaling | Whale song | Baleen
+Dolphin > Bottlenose dolphin | Animal echolocation | Dolphin intelligence
+Elephant > African bush elephant | Asian elephant | Mammoth | Ivory | Ivory trade | Elephant cognition | Tusk
+Dog > Dog breed | Gray wolf | Dog training | Working dog | Guide dog | Origin of the domestic dog
+Cat > Cat breed | Felidae | Big cat | Cats in ancient Egypt | Cheetah | Leopard | Jaguar
+Horse > Horse breed | Equidae | Horses in warfare | Horse racing | Equestrianism | Przewalski's horse | Donkey
+Cattle > Aurochs | Dairy cattle | Beef | Zebu | Water buffalo | Bison
+Lion > Asiatic lion | Barbary lion
+Tiger > Siberian tiger | Bengal tiger | Tiger conservation
+Wolf > Arctic wolf | Ethiopian wolf | Wolves in folklore, religion and mythology
+Bear > Brown bear | Polar bear | Giant panda | American black bear | Hibernation
+Octopus > Cephalopod intelligence | Cephalopod | Ink | Camouflage
+Penguin > Emperor penguin | King penguin | Adélie penguin
+Eagle > Golden eagle | Bald eagle | Bird of prey | Falconry
+Owl > Barn owl | Snowy owl | Nocturnality
+Crow > Common raven | Corvidae
+Parrot > African grey parrot | Macaw | Cockatoo | Talking bird
+Frog > Poison dart frog | Tadpole | Chytridiomycosis | Decline in amphibian populations
+Snake > Venomous snake | King cobra | Python (genus) | Rattlesnake | Snake venom | Anaconda
+Turtle > Sea turtle | Galápagos tortoise | Leatherback sea turtle | Tortoise
+Crocodilia > Saltwater crocodile | Nile crocodile | Alligator | Gharial
+Coral > Coral bleaching | Great Barrier Reef | Coral reef fish
+Jellyfish > Box jellyfish | Turritopsis dohrnii | Portuguese man o' war | Bioluminescence
+Mosquito > Anopheles | Aedes aegypti | Mosquito-borne disease | Dengue fever
+Termite > Termite mound
+Honey bee > Waggle dance | Queen bee | Beehive | Beeswax | Royal jelly
+Arachnid > Spider | Scorpion | Tick | Mite
+Spider > Spider silk | Tarantula | Black widow | Orb-weaver spider | Spider web
+Crustacean > Crab | Lobster | Shrimp | Krill | Barnacle | Woodlouse
+Primate > Primatology | Old World monkey | New World monkey
+Chimpanzee > Chimpanzee–human last common ancestor | Tool use by animals | Pan troglodytes
+Rodent > Mouse | Rat | Squirrel | Beaver | Capybara | Hamster | Porcupine
+Bat > Fruit bat | Vampire bat | Bat flight
+Marsupial > Kangaroo | Koala | Opossum | Tasmanian devil | Thylacine | Wombat
+Monotreme > Platypus | Echidna
+Ungulate > Deer | Giraffe | Camel | Pig | Sheep | Goat | Rhinoceros | Hippopotamus | Zebra | Antelope
+Carnivora > Fox | Raccoon | Hyena | Pinniped | Sea lion | Walrus | Otter | Badger | Mongoose
+Dinosaur > Feathered dinosaur | Mesozoic | Jurassic | Triassic | Cretaceous
+Fossil > Fossilization | Trace fossil | Index fossil | Petrified wood | Amber | Mary Anning
+# medicine and body
+Heart > Cardiac cycle | Heart rate | Cardiac muscle | Heart valve | Electrocardiography | Myocardial infarction | Pacemaker
+Lung > Breathing | Alveolus | Diaphragm (anatomy) | Asthma | Pneumonia
+Human eye > Retina | Cornea | Iris (anatomy) | Lens (anatomy) | Rod cell | Cone cell | Color vision | Myopia
+Skin > Epidermis | Dermis | Melanin | Human skin color | Sweat gland | Wound healing | Tattoo
+Bone > Bone marrow | Osteoporosis | Bone fracture | Cartilage | Joint
+Sleep > Rapid eye movement sleep | Sleep cycle | Insomnia | Sleep deprivation | Circadian rhythm | Sleep apnea
+Dream > Lucid dream | Nightmare | Dream interpretation | The Interpretation of Dreams
+Happiness > Well-being | Hedonism | Eudaimonia | World Happiness Report | Subjective well-being
+Love > Romance (love) | Attachment theory | Friendship | Compassion | Agape
+Cancer > Tumor | Metastasis | Chemotherapy | Radiation therapy | Oncology | Carcinogen | Leukemia | Breast cancer | Lung cancer
+Vaccine > Smallpox vaccine | MRNA vaccine | Herd immunity | Vaccine hesitancy | Polio vaccine
+Pandemic > Spanish flu | Black Death | HIV/AIDS | Cholera | 1918 flu pandemic | Pandemic prevention
+COVID-19 > SARS-CoV-2 | COVID-19 vaccine | Long COVID | Lockdown
+Surgery > History of surgery | Minimally invasive procedure | Robotic surgery | Plastic surgery | Sterilization (microbiology)

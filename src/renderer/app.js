@@ -3,6 +3,7 @@ import { renderHome } from './views/home.js';
 import { renderTree } from './views/tree.js';
 import { renderReader } from './views/reader.js';
 import { showError } from './lib/api.js';
+import './lib/theme.js';
 
 const app = document.getElementById('app');
 let cleanup = null;

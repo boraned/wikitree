@@ -1,27 +1,29 @@
 // Wiki reader: cleaned Wikipedia article; blue links become child nodes.
-import { api, cachedSummary, showError, isOffline } from '../lib/api.js';
+import { api, cachedSummary, showError, isOffline, fileUrl } from '../lib/api.js';
 import { navigate, goBack } from '../app.js';
 import { h, iconBtn, icon } from '../lib/dom.js';
 import { cleanArticle, saveOffline } from '../lib/clean.js';
 import * as store from '../lib/store.js';
+import { mountPreview, fullscreenTarget, toggleFullscreen, hostOf } from '../lib/previews.js';
+import { mountFamily } from '../lib/family.js';
 
 const scrollMemory = new Map();
 
 export async function renderReader(root, projectId, nodeId) {
   const project = await store.loadProject(projectId);
   const node = project.nodes[nodeId];
-  if (!node || node.type !== 'wiki') throw new Error('Page not found in this project');
+  if (!node || !['wiki', 'file', 'web'].includes(node.type)) throw new Error('Page not found in this project');
+  if (node.type !== 'wiki') return renderDocument(root, projectId, node, project);
   const lang = node.lang || 'en';
   const treeHash = `#/p/${projectId}`;
   sessionStorage.setItem(`wt-last-${projectId}`, nodeId);
   const listeners = new AbortController(); // window listeners, removed when leaving the page
 
   // ---------- chrome ----------
-  const backBtn = iconBtn('back', 'Back', 'icon-btn back');
-  const treeBtn = iconBtn('tree', 'Tree');
+  const treeBtn = iconBtn('tree', 'Back to the overview', 'icon-btn tree-btn');
   const saveBtn = iconBtn('save', 'Save offline', 'icon-btn save-btn');
   saveBtn.disabled = true;
-  const crumbs = h('nav', { class: 'crumbs' });
+  const crumbs = h('nav', { class: 'crumbs family' });
   const bar = h('i');
   const toc = h('nav', { class: 'toc' });
   const body = h('div', { class: 'wiki-body' });
@@ -34,28 +36,14 @@ export async function renderReader(root, projectId, nodeId) {
   const loading = h('div', { class: 'loading' }, h('span'), h('span'), h('span'));
   body.append(loading);
   const view = h('div', { class: 'reader' },
-    h('div', { class: 'topbar' }, backBtn, crumbs, h('div', { class: 'spacer' }), saveBtn, treeBtn),
+    h('div', { class: 'topbar' }, crumbs, h('div', { class: 'spacer' }), saveBtn, treeBtn),
     h('div', { class: 'progress' }, bar),
     scroller);
   root.append(view);
 
-  backBtn.onclick = () => goBack(treeHash);
   treeBtn.onclick = () => navigate(treeHash);
-  renderCrumbs();
-
-  function renderCrumbs() {
-    let items = store.pathTo(nodeId).map((n) => ({ n }));
-    if (items.length > 5) items = [items[0], { gap: true }, ...items.slice(-3)];
-    crumbs.replaceChildren(...items.flatMap((it, i) => {
-      const sep = i ? [h('span', { class: 'sep' }, '›')] : [];
-      if (it.gap) return [...sep, h('span', { class: 'gap' }, '…')];
-      const n = it.n;
-      const isCur = n.id === nodeId;
-      const b = h('button', { class: `crumb ${n.type}${isCur ? ' cur' : ''}` }, n.title);
-      if (!isCur) b.onclick = () => navigate(n.type === 'wiki' ? `${treeHash}/w/${n.id}` : treeHash);
-      return [...sep, b];
-    }));
-  }
+  const family = mountFamily(crumbs, projectId, nodeId);
+  const renderCrumbs = family.render;
 
   // ---------- content ----------
   let page;
@@ -73,6 +61,7 @@ export async function renderReader(root, projectId, nodeId) {
     }
   } catch (e) {
     loading.remove();
+    listeners.signal.addEventListener('abort', family.dispose);
     body.append(h('div', { class: 'load-error' }, isOffline(e) ? 'No internet connection' : e.message,
       h('button', { class: 'btn-ghost', onclick: () => location.reload() }, 'Retry')));
     return () => {};
@@ -185,6 +174,7 @@ export async function renderReader(root, projectId, nodeId) {
       const child = store.findChildByTitle(nodeId, s.title, lang)
         || store.addNode(nodeId, { type: 'wiki', title: s.title, lang, description: s.description, thumb: s.thumb });
       markInTree();
+      renderCrumbs();
       body.querySelectorAll('a.wl').forEach((x) => { if (x.dataset.title.toLowerCase() === title.toLowerCase()) x.classList.add('in-tree'); });
       if (!stay) go(child.id);
     } catch (e) {
@@ -278,11 +268,49 @@ export async function renderReader(root, projectId, nodeId) {
 
   return () => {
     listeners.abort();
+    family.dispose();
     scrollMemory.set(nodeId, scroller.scrollTop);
     hidePreview();
     document.querySelector('.lightbox')?.remove();
     document.removeEventListener('keydown', onKey);
     window.removeEventListener('mouseup', onMouse);
     store.flush();
+  };
+}
+
+// Attachments and web pages, enlarged. The same live previews as the overview, filling the window.
+async function renderDocument(root, projectId, node) {
+  const treeHash = `#/p/${projectId}`;
+  sessionStorage.setItem(`wt-last-${projectId}`, node.id);
+  const treeBtn = iconBtn('tree', 'Back to the overview', 'icon-btn tree-btn');
+  const fullscreenBtn = iconBtn('fit', 'Fullscreen', 'icon-btn file-fullscreen');
+  const events = new AbortController();
+  const crumbs = h('nav', { class: 'crumbs family' });
+  const body = h('div', { class: `reader-preview kind-${node.type === 'web' ? 'web' : node.kind}` });
+  const tools = [];
+  if (node.type === 'web') {
+    const reload = iconBtn('reload', 'Reload page', 'icon-btn web-reload');
+    const external = iconBtn('open', 'Open in browser', 'icon-btn web-external');
+    reload.onclick = () => { const f = body.querySelector('iframe'); if (f) f.src = node.url; };
+    external.onclick = () => api.openExternal(node.url).catch((e) => showError(e.message));
+    tools.push(h('span', { class: 'web-address', title: node.url }, hostOf(node.url)), reload, external);
+  }
+  const view = h('div', { class: 'reader document-reader' },
+    h('div', { class: 'topbar' }, crumbs, h('div', { class: 'spacer' }), ...tools, fullscreenBtn, treeBtn),
+    h('div', { class: 'document-scroll' }, body));
+  root.append(view);
+  treeBtn.onclick = () => navigate(treeHash);
+  const family = mountFamily(crumbs, projectId, node.id);
+  fullscreenBtn.onclick = () => toggleFullscreen(fullscreenTarget(body)).catch((e) => showError(e.message));
+  document.addEventListener('fullscreenchange', () => {
+    fullscreenBtn.title = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
+    fullscreenBtn.setAttribute('aria-label', fullscreenBtn.title);
+  }, { signal: events.signal });
+  const dispose = mountPreview(body, node, node.type === 'web' ? node.url : fileUrl(projectId, node.file));
+  return () => {
+    events.abort();
+    family.dispose();
+    dispose();
+    view.remove();
   };
 }

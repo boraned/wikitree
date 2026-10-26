@@ -21,6 +21,7 @@ if (process.platform === 'linux' && !process.env.WIKITREE_SHOTS_CHILD && spawnSy
 const require = createRequire(import.meta.url);
 const { _electron: electron } = require('playwright-core');
 const home = fs.mkdtempSync(path.join(os.tmpdir(), 'wikitree-shots-'));
+fs.writeFileSync(path.join(home, 'settings.json'), JSON.stringify({ exampleOffered: true })); // screenshots build their own demo
 fs.mkdirSync(OUT, { recursive: true });
 
 const app = await electron.launch({ executablePath: require('electron'), args: [ROOT, '--no-sandbox'], env: { ...process.env, WIKITREE_HOME: home } });

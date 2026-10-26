@@ -1,0 +1,28 @@
+# ---------- 8. What a tree carries: paper → writing → knowledge ----------
+Paper > Papermaking | Pulp (paper) | Papyrus | Parchment | Cai Lun | Book | Printing | Newspaper | Paper recycling | Origami | Writing
+Writing > History of writing | Writing system | Alphabet | Phoenician alphabet | Greek alphabet | Latin alphabet | Cyrillic script | Arabic script | Chinese characters | Logogram | Syllabary | Calligraphy | Handwriting | Literacy | Typography | Punctuation | Knowledge
+Book > Library | Library of Alexandria | Codex | Manuscript | Illuminated manuscript | Encyclopedia | Publishing | E-book | Bookbinding | Author
+Printing > Woodblock printing | Movable type | Printing press | Offset printing | 3D printing | Mass media
+Mass media > Journalism | Radio | Television | Film | Magazine | Social media | Advertising | Propaganda | Public relations
+Knowledge > Epistemology | Information | Truth | Belief | Science | Philosophy | Education | Literature | Wisdom | Wikipedia | Library science | Encyclopedia | Data
+Epistemology > Justified true belief | Empiricism | Rationalism | Skepticism | A priori and a posteriori | Gettier problem | Scientific method | Inductive reasoning | Deductive reasoning
+Science > History of science | Scientific method | Natural science | Social science | Formal science | Applied science | Philosophy of science | Scientific theory | Hypothesis | Experiment | Observation | Peer review | Scientific consensus | Scientist | Pseudoscience | Research | Nobel Prize | Science policy | Citizen science
+History of science > Science in the medieval Islamic world | Ibn al-Haytham | Avicenna | Copernican Revolution | Francis Bacon | René Descartes | Royal Society | Karl Popper | Thomas Kuhn | Paradigm shift | Falsifiability
+Social science > Sociology | Anthropology | Economics | Political science | Psychology | Human geography | Archaeology | Linguistics | History | Demography | Criminology | Communication studies
+Sociology > Social structure | Social institution | Socialization | Social stratification | Social mobility | Social network | Émile Durkheim | Max Weber | Karl Marx | Auguste Comte | Social change | Deviance (sociology) | Urban sociology
+Anthropology > Cultural anthropology | Biological anthropology | Ethnography | Kinship | Ritual | Franz Boas | Claude Lévi-Strauss | Margaret Mead | Cultural relativism
+Philosophy > History of philosophy | Metaphysics | Ontology | Existence | Reality | Logic | Ethics | Aesthetics | Political philosophy | Philosophy of mind | Philosophy of language | Philosophy of religion | Existentialism | Phenomenology (philosophy) | Pragmatism | Analytic philosophy | Continental philosophy | Stoicism | Epicureanism | Utilitarianism | Nihilism | Determinism | Meaning of life | Philosopher
+History of philosophy > Pre-Socratic philosophy | Ancient Greek philosophy | Indian philosophy | Chinese philosophy | Islamic philosophy | Medieval philosophy | Modern philosophy | Contemporary philosophy | Thales of Miletus | Heraclitus | Pythagoras | Laozi | Mencius | Nagarjuna | Al-Farabi | Averroes | Thomas Aquinas | Baruch Spinoza | Gottfried Wilhelm Leibniz | Georg Wilhelm Friedrich Hegel | Arthur Schopenhauer | Friedrich Nietzsche | Søren Kierkegaard | Ludwig Wittgenstein | Bertrand Russell | Martin Heidegger | Jean-Paul Sartre | Simone de Beauvoir
+Metaphysics > Being | Substance theory | Causality | Identity (philosophy) | Universal (metaphysics) | Possible world | Idealism | Materialism | Dualism (philosophy of mind) | Monism | Physicalism | Nothing | Why there is anything at all
+Reality > Objectivity (philosophy) | Subjectivity | Simulation hypothesis | Philosophical realism | Anti-realism | Allegory of the cave
+Ethics > Morality | Virtue ethics | Deontology | Consequentialism | Moral relativism | Applied ethics | Bioethics | Environmental ethics | Human rights | Justice | Good and evil | Golden Rule | Animal rights | Categorical imperative
+Aesthetics > Beauty | Sublime (philosophy) | Taste (aesthetics) | Philosophy of art
+Education > History of education | School | Primary school | Secondary school | University | Teacher | Student | Curriculum | Pedagogy | Homeschooling | Distance education | Academy (Plato) | University of Bologna | Al-Qarawiyyin | Literacy | Scholarship | Academic degree | Doctor of Philosophy
+University > University of Oxford | University of Cambridge | Harvard University | Massachusetts Institute of Technology | Academic publishing | Research university
+Literature > Poetry | Prose | Novel | Short story | Drama | Epic poetry | Fiction | Nonfiction | Literary genre | World literature | Mythology | Folklore | Fairy tale | Fable | Science fiction | Fantasy | Mystery fiction | Literary criticism | Narrative | Author
+Epic poetry > Iliad | Odyssey | Homer | Mahabharata | Ramayana | Aeneid | Beowulf | Shahnameh | Divine Comedy
+World literature > William Shakespeare | Miguel de Cervantes | Don Quixote | Leo Tolstoy | War and Peace | Fyodor Dostoevsky | Jane Austen | Charles Dickens | Victor Hugo | Johann Wolfgang von Goethe | Dante Alighieri | Rumi | Murasaki Shikibu | The Tale of Genji | One Thousand and One Nights | Franz Kafka | James Joyce | Gabriel García Márquez | Orhan Pamuk | Rabindranath Tagore | Mark Twain | Ernest Hemingway | Toni Morrison | Chinua Achebe | Jorge Luis Borges
+Poetry > Sonnet | Haiku | Rhyme | Meter (poetry) | Lyric poetry | Ghazal | Free verse
+Drama > Tragedy | Comedy | Theatre | Ancient Greek theatre | Sophocles | Playwright
+Information > Information theory | Claude Shannon | Bit | Entropy (information theory) | Signal | Communication | Data compression | Cryptography | Information science
+Wikipedia > Wikimedia Foundation | Jimmy Wales | Wiki | Crowdsourcing | Open content

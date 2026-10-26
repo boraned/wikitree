@@ -22,12 +22,12 @@ check('saved article opens', (await win.textContent('.page-title')) === 'Orman')
 check('its images load from disk', imgs.length > 0 && imgs.every(Boolean), `${imgs.filter(Boolean).length}/${imgs.length}`);
 check('downloaded article shows ✓, not clickable', await win.$eval('.save-btn', (b) => b.disabled && b.title === 'Downloaded'));
 
-await win.click('.back');
+await win.click('.tree-btn');
 await win.waitForSelector('.node.is-root');
 await win.click('.node.wiki:has-text("Kök") .title');
 await win.waitForSelector('.load-error', { timeout: 30000 });
 check('unsaved article says "No internet connection"', (await win.textContent('.load-error')).includes('No internet connection'));
-await win.click('.back');
+await win.click('.tree-btn');
 await win.waitForSelector('.node.is-root');
 
 await fit(win);

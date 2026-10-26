@@ -4,6 +4,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { checkLang, sha, pageKey, pagesDir, mediaDir, projectFile, writeAtomic } from './paths.js';
 import { USER_AGENT } from './wikipedia.js';
+import { historyText } from './history.js';
 
 export const mediaUrl = (projectId, file) => `wikitree://media/${projectId}/${file}`;
 
@@ -64,7 +65,7 @@ export async function savedState({ projectId, items }) {
     fs.access(path.join(pagesDir(projectId), `${pageKey(checkLang(lang), title)}.json`)).then(() => true, () => false)));
 }
 
-/** Deletes media no longer referenced by any saved page or by the project file. */
+/** Deletes media no longer referenced by any saved page, the project file or its history. */
 async function collectMedia(projectId) {
   const dir = mediaDir(projectId);
   const files = await fs.readdir(dir).catch(() => []);
@@ -73,6 +74,7 @@ async function collectMedia(projectId) {
   const re = new RegExp(`wikitree://media/${projectId}/([\\w.]+)`, 'g');
   const scan = (text) => { for (const m of text.matchAll(re)) used.add(m[1]); };
   scan(await fs.readFile(projectFile(projectId), 'utf8').catch(() => ''));
+  scan(historyText(projectId));
   for (const f of await fs.readdir(pagesDir(projectId)).catch(() => [])) {
     scan(await fs.readFile(path.join(pagesDir(projectId), f), 'utf8').catch(() => ''));
   }

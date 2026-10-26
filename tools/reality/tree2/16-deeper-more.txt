@@ -1,0 +1,81 @@
+# ---------- Deeper rings: more of the living world and the human one ----------
+Oak > Valley oak | Oak apple | Major Oak | Quercus ilex
+Beech > Fagus sylvatica | Beech forest
+Larch > Larix decidua | Larix sibirica
+Spruce > Picea abies | Old Tjikko | Sitka spruce
+Fir > Abies alba | Douglas fir | Balsam fir
+Cedrus > Cedrus libani | Cedrus deodara | Cedrus atlantica
+Taxus > Taxus baccata | Fortingall Yew | Taxol
+Araucaria > Araucaria araucana | Norfolk Island pine | Wollemia
+Cycad > Cycas revoluta | Zamia
+Peat > Peatland | Bog | Bog body | Fen
+Lichen > Usnea | Reindeer lichen | Lichenology
+Mushroom > Agaricus bisporus | Amanita muscaria | Chanterelle | Psilocybin mushroom | Fairy ring | Edible mushroom
+Yeast > Saccharomyces cerevisiae | Brewing | Baker's yeast
+Algae > Seaweed | Kelp forest | Green algae | Red algae | Algal bloom
+Plankton > Phytoplankton | Zooplankton | Copepod
+Fish > Fish anatomy | Gill | Swim bladder | Schooling (fish)
+Salmon > Salmon run | Atlantic salmon | Sockeye salmon
+Bird migration > Arctic tern | Bar-tailed godwit | Bird navigation
+Hummingbird > Bee hummingbird | Hovering flight
+Chicken > Red junglefowl | Poultry | Egg as food
+Giraffe > Okapi
+Camel > Dromedary | Bactrian camel | Camel train
+Sheep > Mouflon | Merino | Wool
+Pig > Wild boar | Domestic pig | Pork
+Deer > Reindeer | Moose | Red deer | Antler
+Rhinoceros > White rhinoceros | Black rhinoceros | Woolly rhinoceros
+Fox > Red fox | Arctic fox | Fennec fox
+Pinniped > Harbor seal | Elephant seal | Leopard seal
+Kangaroo > Red kangaroo | Wallaby | Joey (marsupial)
+Platypus > Electroreception and electrogenesis
+Mammoth > Woolly mammoth | De-extinction | Quaternary extinction event
+Neanderthal > Neanderthal genetics | Interbreeding between archaic and modern humans | Mousterian
+Homo erectus > Peking Man | Turkana Boy | Acheulean
+Early human migrations > Out of Africa | Peopling of the Americas | Beringia | Settlement of the Americas
+# ---------- Deeper rings: society and mind ----------
+Democracy > Direct democracy | Representative democracy | Liberal democracy | Universal suffrage | Referendum | Ancient Greek democracy
+Monarchy > Absolute monarchy | Constitutional monarchy | Emperor | King | Queen regnant | Dynasty
+Election > Electoral system | First-past-the-post voting | Proportional representation | Election campaign | Secret ballot
+Human rights > Freedom of speech | Freedom of religion | Right to life | Women's rights | Children's rights | Amnesty International
+Capitalism > Free market | Private property | Laissez-faire | Neoliberalism | Corporate capitalism
+Socialism > Democratic socialism | Utopian socialism | Planned economy | Cooperative
+Communism > Marxism–Leninism | Maoism | Soviet-type economic planning | Communist state
+Poverty > Extreme poverty | Poverty threshold | Microfinance | Sustainable Development Goals
+Migration (human) > Immigration | Emigration | Refugee | Diaspora | Human migration
+Urbanization > Urban sprawl | Slum | Gentrification | Rural flight
+Education > Reading | Mathematics education | Science education | Montessori education | Standardized test
+Library > Public library | National library | Library of Congress | Dewey Decimal Classification | Archive
+Encyclopedia > Encyclopædia Britannica | Diderot | Yongle Encyclopedia | Natural History (Pliny)
+Newspaper > The New York Times | The Times | Tabloid journalism
+Journalism > Investigative journalism | News agency | Freedom of the press | Fact-checking | Pulitzer Prize
+Radio > Radio broadcasting | AM broadcasting | FM broadcasting | Podcast | BBC
+Television > History of television | Television program | Broadcasting | Streaming television | Netflix
+Advertising > Billboard | Television advertisement | Online advertising
+Morality > Moral psychology | Conscience | Virtue | Vice | Sin
+Justice > Distributive justice | Retributive justice | Restorative justice | A Theory of Justice | John Rawls
+Free will > Compatibilism | Libertarianism (metaphysics) | Hard determinism | Libet experiment
+Meaning of life > Absurdism | Albert Camus | The Myth of Sisyphus | Existential crisis
+Existentialism > Being and Nothingness | Existence precedes essence | Angst | Authenticity (philosophy)
+Stoicism > Marcus Aurelius | Meditations | Seneca the Younger | Epictetus | Zeno of Citium
+Utilitarianism > Jeremy Bentham | John Stuart Mill | Greatest happiness principle | Peter Singer
+Logic > Inductive logic programming | Informal logic | Critical thinking
+Paradox > Liar paradox | Ship of Theseus | Sorites paradox | Grandfather paradox | Newcomb's paradox
+Time travel > Time machine | The Time Machine | Closed timelike curve | Novikov self-consistency principle
+Calendar > Gregorian calendar | Julian calendar | Islamic calendar | Hebrew calendar | Chinese calendar | Mayan calendar | Leap year
+Clock > Water clock | Sundial | Pendulum clock | Quartz clock | Mechanical watch | Hourglass
+Map > World map | Mercator projection | Globe | Atlas | Topographic map | Ptolemy's world map | Google Earth
+Navigation > Celestial navigation | Sextant | Dead reckoning | Marine chronometer
+Compass > Magnetic declination | Gyrocompass | Lodestone
+Wheel > Wheel and axle | Spoke | Chariot | Potter's wheel | Gear
+Tool > Hand tool | Power tool | Hammer | Axe | Knife | Screwdriver | Wrench | Stone tool
+Axe > Hand axe | Felling | Lumberjack | Splitting maul
+Saw > Chainsaw | Bow saw | Crosscut saw | Sawmill
+Lumber > Dimensional lumber | Sawmill | Wood drying | Engineered wood
+Charcoal > Charcoal burner | Activated carbon | Biochar
+Wood fuel > Firewood | Wood-burning stove | Fireplace | Wood pellet
+Tree planting > Trillion Tree Campaign | Green Belt Movement | Wangari Maathai | Great Green Wall (Africa) | Arbor Day
+Agroforestry > Silvopasture | Alley cropping | Forest gardening | Shade-grown coffee
+Logging > Clearcutting | Selective logging | Illegal logging | Log driving
+Botanical garden > Royal Botanic Gardens, Kew | Arboretum | Seed bank | Svalbard Global Seed Vault
+Carl Linnaeus > Systema Naturae | Species Plantarum | Linnaean taxonomy

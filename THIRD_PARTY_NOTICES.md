@@ -11,3 +11,20 @@ WikiTree's own code is MIT-licensed (see `LICENSE`). It bundles or uses:
 | Electron | runtime | MIT |
 
 WikiTree is an independent project. It is not affiliated with or endorsed by the Wikimedia Foundation.
+## marked
+
+The Markdown reader includes marked v18.1.1 (MIT License), vendored under `src/renderer/assets/vendor/`.
+Copyright (c) 2011–2026 MarkedJS and Christopher Jeffrey.
+
+## highlight.js
+
+Source-code viewing bundles highlight.js v11.12.0, including its 193 language grammars (BSD 3-Clause).
+The license is included at `src/renderer/assets/vendor/highlight.LICENSE`.
+The browser bundle and language catalog are rebuilt with `npm run build:highlighter` using esbuild (MIT, build-time only).
+
+## docx-preview and JSZip
+
+Word documents are rendered with docx-preview v0.4.1 (Apache License 2.0) and JSZip v3.10.2 (MIT, from its
+MIT-or-GPLv3 dual licence), bundled offline into `src/renderer/assets/vendor/docx-preview.esm.js`.
+Licences: `src/renderer/assets/vendor/docx-preview.LICENSE`, `src/renderer/assets/vendor/jszip.LICENSE.md`.
+Rebuild with `npm run build:docx`.

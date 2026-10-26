@@ -1,9 +1,8 @@
 name: Release
 
-# Push a tag like v1.1.0 to build every platform natively and publish a GitHub Release with the files.
+# Run manually to build every platform natively on GitHub's runners. Releases are published from
+# the locally built and tested files in releases/ (scripts/release.sh), so tags don't trigger this.
 on:
-  push:
-    tags: ['v*']
   workflow_dispatch:
 
 permissions:
@@ -44,7 +43,7 @@ jobs:
 
   release:
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: false # artifacts only; releases come from releases/
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4

@@ -1,0 +1,39 @@
+# ---------- 5. How a tree came to be: evolution → life ----------
+Evolution > Life | Natural selection | Charles Darwin | On the Origin of Species | Common descent | Tree of life (biology) | Phylogenetic tree | Speciation | Adaptation | Mutation | Genetic drift | Gene flow | Coevolution | Convergent evolution | Evolutionary history of life | Human evolution | Evolutionary biology | Modern synthesis (20th century) | Sexual selection | Fitness (biology)
+Life > Biology | Abiogenesis | Cell (biology) | Organism | Metabolism | Homeostasis | Reproduction | Death | Virus | Taxonomy (biology) | Three-domain system | Bacteria | Archaea | Eukaryote | Last universal common ancestor | Origin of life
+Biology > History of biology | Cell biology | Molecular biology | Genetics | Microbiology | Zoology | Physiology | Anatomy | Developmental biology | Neuroscience | Immunology | Ethology | Marine biology | Biotechnology | Bioinformatics | Systems biology | Biologist
+Cell (biology) > Cell theory | Cell membrane | Cytoplasm | Cell nucleus | Mitochondrion | Ribosome | Endoplasmic reticulum | Golgi apparatus | Lysosome | Cytoskeleton | Prokaryote | Cell division | Mitosis | Meiosis | Cell cycle | Stem cell | Apoptosis | Endosymbiotic theory | Cell signaling
+Molecular biology > DNA | RNA | Protein | Central dogma of molecular biology | Transcription (biology) | Translation (biology) | DNA replication | Genetic code | Gene expression | Amino acid | Nucleotide | Lipid | Carbohydrate | Enzyme | Messenger RNA | Polymerase chain reaction | CRISPR gene editing
+DNA > Double helix | Base pair | Chromosome | Genome | Rosalind Franklin | James Watson | Francis Crick | DNA sequencing | Human Genome Project | Non-coding DNA
+Protein > Protein folding | Protein structure | Antibody | Hemoglobin | Collagen | Keratin | Hormone | Receptor (biochemistry)
+Genetics > Gene | Allele | Heredity | Gregor Mendel | Mendelian inheritance | Genotype | Phenotype | Dominance (genetics) | Population genetics | Epigenetics | Genetic engineering | Genetically modified organism | Cloning | Genetic disorder | Genetic variation | Evolutionary developmental biology
+Metabolism > Cellular respiration | Glycolysis | Citric acid cycle | Oxidative phosphorylation | Adenosine triphosphate | Fermentation | Anabolism | Catabolism
+Reproduction > Asexual reproduction | Sexual reproduction | Fertilisation | Gamete | Sperm | Egg cell | Embryonic development | Biological life cycle
+Death > Senescence | Ageing | Life expectancy | Biological immortality
+Virus > Viral replication | Bacteriophage | Virion | Retrovirus | Influenza | Coronavirus | HIV | Viral evolution
+Taxonomy (biology) > Binomial nomenclature | Taxonomic rank | Species | Genus | Order (biology) | Class (biology) | Phylum | Kingdom (biology) | Cladistics | Clade
+Bacteria > Escherichia coli | Cyanobacteria | Gut microbiota | Pathogenic bacteria | Antibiotic | Antimicrobial resistance | Biofilm | Gram stain | Quorum sensing
+Archaea > Extremophile | Methanogen | Halophile | Thermophile
+Eukaryote > Protist | Fungus | Plant | Animal | Algae | Amoeba | Slime mold | Diatom | Plankton
+Fungus > Mushroom | Yeast | Mold | Lichen | Mycelium | Penicillium | Truffle | Mycology
+Animal > Zoology | Invertebrate | Vertebrate | Sponge | Cnidaria | Arthropod | Mollusca | Annelid | Nematode | Echinoderm | Chordate | Animal behavior | Animal cognition | Animal communication | Migration (ecology) | Domestication
+Invertebrate > Insect | Arachnid | Crustacean | Jellyfish | Coral | Octopus | Squid | Snail | Earthworm | Starfish
+Insect > Ant | Bee | Butterfly | Beetle | Mosquito | Termite | Grasshopper | Dragonfly | Moth | Fly | Wasp | Eusociality | Metamorphosis | Entomology
+Bee > Honey bee | Beekeeping | Honey | Bumblebee | Colony collapse disorder
+Vertebrate > Fish | Amphibian | Reptile | Bird | Mammal | Vertebral column | Skeleton
+Fish > Shark | Salmon | Tuna | Seahorse | Coelacanth | Ray-finned fish | Cartilaginous fish | Fish migration
+Amphibian > Frog | Salamander | Caecilian | Axolotl
+Reptile > Dinosaur | Crocodilia | Turtle | Snake | Lizard | Tuatara
+Dinosaur > Tyrannosaurus | Triceratops | Velociraptor | Stegosaurus | Pterosaur | Sauropod | Paleontology | Origin of birds
+Bird > Bird flight | Feather | Bird migration | Songbird | Eagle | Owl | Penguin | Parrot | Crow | Pigeon | Hummingbird | Ostrich | Chicken | Ornithology | Egg
+Mammal > Primate | Rodent | Bat | Carnivora | Cetacea | Ungulate | Marsupial | Monotreme | Elephant | Horse | Cattle | Dog | Cat | Bear | Lion | Tiger | Wolf | Whale | Dolphin | Giraffe | Placentalia
+Primate > Ape | Hominidae | Chimpanzee | Gorilla | Orangutan | Bonobo | Monkey | Lemur | Gibbon
+Domestication > Domestication of animals | Livestock | Pet | Selective breeding | Domestication of the dog
+Evolutionary history of life > Timeline of the evolutionary history of life | Stromatolite | Ediacaran biota | Burgess Shale | Evolution of fish | Evolution of tetrapods | Evolution of mammals | Evolution of birds | Evolution of plants | Transitional fossil | Archaeopteryx | Tiktaalik | Living fossil
+Human evolution > Hominini | Australopithecus | Lucy (Australopithecus) | Homo habilis | Homo erectus | Neanderthal | Denisovan | Homo sapiens | Early human migrations | Recent African origin of modern humans | Bipedalism | Evolution of human intelligence | Origin of language
+Physiology > Circulatory system | Respiratory system | Digestive system | Nervous system | Endocrine system | Immune system | Musculoskeletal system | Excretory system | Reproductive system | Integumentary system | Lymphatic system
+Immunology > Innate immune system | Adaptive immune system | White blood cell | Vaccine | Inflammation | Allergy | Autoimmune disease | Antigen
+Neuroscience > Neuron | Synapse | Neurotransmitter | Brain | Action potential | Neuroplasticity | Glia | Cognitive neuroscience
+Ethology > Instinct | Imprinting (psychology) | Courtship display | Territory (animal) | Tool use by non-humans | Konrad Lorenz | Jane Goodall
+Biotechnology > Genetic engineering | Synthetic biology | Tissue engineering | Biopharmaceutical | Fermentation in food processing | Gene therapy
+Microbiology > Microorganism | Louis Pasteur | Antonie van Leeuwenhoek | Germ theory of disease | Pathogen | Microbiome

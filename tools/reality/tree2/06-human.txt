@@ -1,0 +1,32 @@
+# ---------- 6. Who sits under a tree: the human — body, mind, language ----------
+Human > Human body | Mind | Language | Person | People | Human nature | Human behavior | Emotion | Consciousness | Personality | Intelligence | Human sexuality | Gender | Family | Childhood | Adolescence | Adult | Old age | Health | Medicine
+Human body > Human skeleton | Muscle | Heart | Blood | Lung | Liver | Kidney | Stomach | Skin | Human eye | Ear | Human nose | Tongue | Human brain | Human hand | Human hair | Tooth | Bone | Spinal cord | Sense | Human height
+Blood > Red blood cell | Platelet | Blood plasma | Blood type | Blood vessel | Artery | Vein | Capillary | Blood pressure
+Sense > Visual perception | Hearing | Olfaction | Taste | Somatosensory system | Proprioception | Pain | Equilibrioception
+Human brain > Cerebral cortex | Cerebellum | Brainstem | Hippocampus | Amygdala | Prefrontal cortex | Hemispheric lateralization | Neocortex
+Mind > Psychology | Thought | Memory | Perception | Attention | Learning | Reason | Imagination | Creativity | Dream | Sleep | Free will | Self | Mind–body problem | Philosophy of mind | Cognitive science | Unconscious mind
+Psychology > History of psychology | Cognitive psychology | Developmental psychology | Social psychology | Clinical psychology | Behaviorism | Psychoanalysis | Sigmund Freud | Carl Jung | Jean Piaget | B. F. Skinner | William James | Positive psychology | Evolutionary psychology | Neuropsychology | Motivation | Psychologist
+Memory > Short-term memory | Long-term memory | Working memory | Episodic memory | Semantic memory | Forgetting | Amnesia
+Learning > Classical conditioning | Operant conditioning | Habit | Skill | Observational learning
+Emotion > Happiness | Sadness | Fear | Anger | Disgust | Surprise (emotion) | Love | Empathy | Shame | Guilt (emotion) | Jealousy | Stress (biology) | Mood (psychology)
+Consciousness > Hard problem of consciousness | Qualia | Altered state of consciousness | Meditation | Hypnosis | Self-awareness | Metacognition
+Intelligence > Intelligence quotient | Human intelligence | Emotional intelligence | Theory of multiple intelligences | Problem solving | Decision-making | Wisdom
+Personality > Big Five personality traits | Introversion and extraversion | Temperament | Character (arts)
+Language > Linguistics | Speech | Writing | Grammar | Syntax | Semantics | Phonetics | Phonology | Morphology (linguistics) | Pragmatics | Word | Sentence (linguistics) | Language family | Sign language | Dialect | Language acquisition | Multilingualism | Endangered language | Noam Chomsky | Ferdinand de Saussure | Translation
+Language family > Indo-European languages | Sino-Tibetan languages | Afroasiatic languages | Niger–Congo languages | Austronesian languages | Turkic languages | Uralic languages | Dravidian languages | Language isolate
+Indo-European languages > English language | Spanish language | Hindi | Russian language | Portuguese language | French language | German language | Latin | Ancient Greek | Sanskrit | Persian language
+Sino-Tibetan languages > Mandarin Chinese | Cantonese | Standard Tibetan | Burmese language
+Turkic languages > Turkish language | Azerbaijani language | Uzbek language | Kazakh language | Old Turkic
+Afroasiatic languages > Arabic | Hebrew language | Amharic | Ancient Egyptian language | Berber languages
+Linguistics > Historical linguistics | Sociolinguistics | Psycholinguistics | Computational linguistics | Etymology | Lexicography | Dictionary | Proto-Indo-European language
+Speech > Vowel | Consonant | Syllable | Accent (sociolinguistics) | Voice (phonetics) | Rhetoric
+Family > Marriage | Parenting | Kinship | Mother | Father | Sibling | Grandparent | Extended family | Nuclear family | Divorce | Adoption
+Childhood > Infant | Play (activity) | Toy | Child development | Puberty
+Human sexuality > Sexual intercourse | Pregnancy | Childbirth | Sexual orientation | Love
+Health > Public health | Nutrition | Physical fitness | Mental health | Hygiene | Disease | Epidemiology | Global health | World Health Organization | Life expectancy | Obesity | Sleep hygiene
+Disease > Infection | Infectious disease | Cancer | Cardiovascular disease | Diabetes | Stroke | Alzheimer's disease | Malaria | Tuberculosis | Smallpox | Plague (disease) | COVID-19 | Mental disorder | Pandemic
+Mental disorder > Depression (mood) | Anxiety disorder | Schizophrenia | Bipolar disorder | Autism | Attention deficit hyperactivity disorder | Post-traumatic stress disorder | Addiction
+Medicine > History of medicine | Hippocrates | Physician | Nursing | Hospital | Surgery | Anesthesia | Pharmacology | Medication | Antibiotics | Vaccination | Medical diagnosis | Medical imaging | Radiology | Psychiatry | Pediatrics | Dentistry | Traditional medicine | Evidence-based medicine | Clinical trial | Organ transplantation | Penicillin | Alexander Fleming | Edward Jenner
+Medical imaging > X-ray | Magnetic resonance imaging | CT scan | Medical ultrasound | Positron emission tomography
+Human behavior > Cooperation | Altruism | Aggression | Habit | Social behavior | Morality | Culture
+People > Human population | World population | Ethnic group | Nation | Indigenous peoples | Demography | Migration (human) | Urbanization | Society

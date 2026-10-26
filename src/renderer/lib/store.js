@@ -20,10 +20,19 @@ export async function loadProject(id) {
   return project;
 }
 
+/** Drops the in-memory copy after an external restore, so the router reloads IndexedDB. */
+export async function evict(id) {
+  if (project?.id !== id) return;
+  await flush();
+  project = null;
+}
+
 // Older files: root had type "root", nodes had no language.
 function normalize(p) {
   const root = p.nodes[p.rootId];
   if (root.type === 'root') root.type = 'header';
+  p.roots = Array.isArray(p.roots) ? p.roots.filter((id) => p.nodes[id]?.parent == null) : [p.rootId];
+  if (!p.roots.includes(p.rootId)) p.roots.unshift(p.rootId);
   for (const n of Object.values(p.nodes)) if (n.type === 'wiki' && !n.lang) n.lang = 'en';
   return p;
 }
@@ -73,22 +82,48 @@ export function addNode(parentId, data) {
   return project.nodes[id];
 }
 
+/** Adds a disconnected top-level node at the point selected on the empty canvas. */
+export function addIndependentNode(data, position) {
+  const id = uid();
+  project.nodes[id] = { id, parent: null, children: [], ...data, x: position.x, y: position.y };
+  project.roots ||= [project.rootId];
+  project.roots.push(id);
+  changed();
+  return project.nodes[id];
+}
+
 /** Removes a node and everything below it; returns the removed nodes. */
 export function removeNode(id) {
   const n = project.nodes[id];
-  if (!n || n.parent == null) return [];
+  if (!n || (n.parent == null && id === project.rootId)) return [];
   const removed = subtree(id).map((x) => project.nodes[x]);
-  const parent = project.nodes[n.parent];
-  parent.children = parent.children.filter((c) => c !== id);
+  if (n.parent == null) project.roots = project.roots.filter((rootId) => rootId !== id);
+  else {
+    const parent = project.nodes[n.parent];
+    parent.children = parent.children.filter((c) => c !== id);
+  }
   for (const r of removed) delete project.nodes[r.id];
   changed();
   return removed;
 }
 
+/** Detaches a node (with its branch) from its parent; it stays where it is as a separate top-level tree. */
+export function detachNode(id) {
+  const n = project.nodes[id];
+  if (!n || n.parent == null) return false;
+  const parent = project.nodes[n.parent];
+  parent.children = parent.children.filter((c) => c !== id);
+  n.parent = null;
+  project.roots ||= [project.rootId];
+  project.roots.push(id);
+  changed();
+  return true;
+}
+
 export function renameNode(id, title) {
   const n = project.nodes[id];
   n.title = title;
-  if (n.parent == null) project.title = title;
+  if (id === project.rootId) project.title = title;
   changed();
 }
 
@@ -121,15 +156,36 @@ export function shiftNodes(ids, dx, dy) {
 /** Attaches `id` (with its children) to a new parent and moves the branch below it. */
 export function reparent(id, newParentId) {
   const n = project.nodes[id];
-  if (n.parent == null || n.parent === newParentId || isDescendant(newParentId, id)) return false;
-  const old = project.nodes[n.parent];
-  old.children = old.children.filter((c) => c !== id);
   const target = project.nodes[newParentId];
+  const mainRoot = id === project.rootId;
+  if (!n || !target || id === newParentId || n.parent === newParentId) return false;
+  if (isDescendant(newParentId, id)) {
+    if (!mainRoot) return false;
+    // Lift the target out first, so attaching the old root below it cannot make a cycle.
+    const old = project.nodes[target.parent];
+    old.children = old.children.filter((c) => c !== newParentId);
+    target.parent = null;
+    project.roots.push(newParentId);
+  }
+  if (n.parent == null) project.roots = project.roots.filter((rootId) => rootId !== id);
+  else {
+    const old = project.nodes[n.parent];
+    old.children = old.children.filter((c) => c !== id);
+  }
   const slot = childSlot(target);
-  shiftNodes(subtree(id), slot.x - n.x, slot.y - n.y);
+  shiftNodes(subtree(id).filter((x) => project.nodes[x].x != null), slot.x - (n.x ?? 0), slot.y - (n.y ?? 0));
   target.children.push(id);
   target.collapsed = false;
   n.parent = newParentId;
+  if (mainRoot) {
+    let top = target;
+    while (top.parent != null) top = project.nodes[top.parent];
+    project.rootId = top.id;
+    project.title = top.title;
+    // The project now represents its new root, not the previous display name.
+    project.label = '';
+    project.roots = [top.id, ...project.roots.filter((rootId) => rootId !== top.id)];
+  }
   changed();
   return true;
 }

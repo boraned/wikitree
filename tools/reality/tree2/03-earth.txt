@@ -1,0 +1,36 @@
+# ---------- 3. Where a tree lives: forest → ecosystem → the Earth ----------
+Forest > Rainforest | Temperate forest | Boreal forest | Old-growth forest | Deforestation | Afforestation | Forestry | Forest ecology | Wildfire | Mangrove | Woodland | Ecosystem
+Rainforest > Amazon rainforest | Congo Basin | Tropical rainforest | Temperate rainforest | Canopy (biology) | Understory
+Forestry > Silviculture | Logging | Sustainable forest management | Agroforestry | Reforestation | Forest management | Tree planting
+Deforestation > Deforestation of the Amazon rainforest | Slash-and-burn | Habitat destruction | Land degradation
+Forest ecology > Forest floor | Leaf litter | Snag (ecology) | Forest dynamics | Old-growth forest
+Ecosystem > Ecology | Food web | Food chain | Trophic level | Biome | Habitat | Ecological niche | Biodiversity | Keystone species | Ecological succession | Ecosystem services | Nutrient cycle | Carbon cycle | Nitrogen cycle | Decomposer | Biosphere
+Ecology > Population ecology | Community (ecology) | Predation | Competition (biology) | Symbiosis | Mutualism (biology) | Parasitism | Commensalism | Carrying capacity | Ecological footprint | Landscape ecology | Ecologist | Rachel Carson
+Biome > Tundra | Taiga | Grassland | Savanna | Desert | Wetland | Coral reef | Chaparral | Steppe | Freshwater ecosystem | Marine ecosystem
+Biodiversity > Species richness | Endemism | Extinction | Holocene extinction | Endangered species | Conservation biology | Biodiversity hotspot | Invasive species | Wildlife | IUCN Red List
+Conservation biology > Protected area | National park | Nature reserve | Wildlife corridor | Ex situ conservation | Rewilding (conservation biology) | World Wide Fund for Nature
+Biosphere > Earth | Gaia hypothesis | Biogeochemical cycle | Biogeography | Life
+Earth > Structure of Earth | Earth science | Geology | Plate tectonics | Atmosphere of Earth | Climate | Weather | Hydrosphere | Ocean | Continent | Geography | Natural resource | History of Earth | Age of Earth | Earth's magnetic field | Earth's rotation | Earth's orbit | Moon | Natural environment | Natural disaster
+Structure of Earth > Crust (geology) | Mantle (geology) | Earth's outer core | Earth's inner core | Lithosphere | Asthenosphere | Mohorovičić discontinuity
+Geology > Rock (geology) | Mineral | Igneous rock | Sedimentary rock | Metamorphic rock | Rock cycle | Erosion | Weathering | Stratigraphy | Fossil | Volcano | Earthquake | Mountain | Geologic time scale | James Hutton | Geologist | Mining | Soil
+Mineral > Quartz | Feldspar | Diamond | Calcite | Gemstone | Ore | Mohs scale
+Plate tectonics > Continental drift | Pangaea | Supercontinent | Subduction | Mid-ocean ridge | Seafloor spreading | Hotspot (geology) | Ring of Fire | Orogeny | Alfred Wegener
+Volcano > Lava | Magma | Volcanic eruption | Supervolcano | Mount Vesuvius | Krakatoa
+Earthquake > Seismology | Seismic wave | Fault (geology) | Richter scale | Tsunami
+Mountain > Himalayas | Mount Everest | Andes | Alps | Rocky Mountains | Glacier
+Soil > Humus | Topsoil | Soil science | Clay | Sand | Loam | Soil erosion | Soil fertility
+Atmosphere of Earth > Troposphere | Stratosphere | Ozone layer | Mesosphere | Thermosphere | Exosphere | Air | Atmospheric pressure | Greenhouse effect | Aurora | Wind
+Climate > Climate system | Climate classification | Köppen climate classification | Tropical climate | Temperate climate | Polar climate | Climate change | Paleoclimatology | Ice age | Milankovitch cycles | El Niño–Southern Oscillation | Monsoon | Season
+Climate change > Global warming | Greenhouse gas | Carbon dioxide in Earth's atmosphere | Effects of climate change | Climate change mitigation | Climate change adaptation | Paris Agreement | Intergovernmental Panel on Climate Change | Sea level rise | Renewable energy
+Weather > Meteorology | Cloud | Rain | Snow | Thunderstorm | Lightning | Tropical cyclone | Tornado | Fog | Humidity | Weather forecasting | Precipitation | Drought | Flood | Heat wave
+Hydrosphere > Water cycle | River | Lake | Groundwater | Aquifer | Ice sheet | Sea ice | Evaporation | Spring (hydrology) | Waterfall | Drainage basin
+River > Nile | Amazon River | Yangtze | Mississippi River | Ganges | Danube | River delta
+Ocean > Pacific Ocean | Atlantic Ocean | Indian Ocean | Arctic Ocean | Southern Ocean | Seawater | Ocean current | Thermohaline circulation | Oceanography | Deep sea | Continental shelf | Mariana Trench | Ocean acidification | Sea | Wind wave
+Continent > Africa | Antarctica | Asia | Australia (continent) | Europe | North America | South America | Island
+Geography > Physical geography | Human geography | Cartography | Map | Latitude | Longitude | Equator | Geographic information system | Landform | Region | Country
+Landform > Valley | Plain | Plateau | Canyon | Cave | Coast | Beach | Peninsula | Delta (landform) | Dune
+Natural resource > Fresh water | Fossil fuel | Coal | Petroleum | Natural gas | Mineral resource | Resource depletion | Sustainability
+History of Earth > Formation and evolution of the Solar System | Hadean | Archean | Proterozoic | Phanerozoic | Paleozoic | Mesozoic | Cenozoic | Great Oxidation Event | Snowball Earth | Cambrian explosion | Extinction event | Cretaceous–Paleogene extinction event | Permian–Triassic extinction event | Holocene
+Natural disaster > Wildfire | Avalanche | Landslide | Famine | Pandemic | Impact event
+Moon > Lunar phase | Moon landing | Apollo program | Tidal locking | Giant-impact hypothesis | Lunar eclipse
+Natural environment > Environmentalism | Pollution | Air pollution | Water pollution | Plastic pollution | Waste management | Recycling | Environmental science | Environmental movement
