@@ -153,6 +153,26 @@ const h2 = await win.$$eval('.wiki-body h2', (e) => e.map((x) => x.textContent))
 log('sections:', h2.join(' | '));
 check('appendix sections removed (Turkish)', !h2.some((t) => /Ayrıca bakınız|Dış bağlantılar|Kaynakça/.test(t)));
 check('Wikipedia attribution shown', (await win.textContent('.attribution')).includes('CC BY-SA'));
+// Exercise the same grid at desktop and narrow widths: short pages must not fall into the 240px TOC track.
+const readerLayout = async (width, noToc) => {
+  await win.setViewportSize({ width, height: 900 });
+  return win.evaluate((noToc) => {
+    const grid = document.querySelector('.reader-grid');
+    const toc = grid.querySelector('.toc');
+    const article = grid.querySelector('.article');
+    if (noToc) { toc?.remove(); grid.classList.add('no-toc'); }
+    const r = article.getBoundingClientRect();
+    const scroll = document.querySelector('.reader-scroll');
+    return { width: r.width, center: r.left + r.width / 2 - (scroll.getBoundingClientRect().left + scroll.clientWidth / 2), toc: !!grid.querySelector('.toc') };
+  }, noToc);
+};
+const wideWithToc = await readerLayout(1400, false);
+check('reader with contents keeps a full-width article', wideWithToc.toc && wideWithToc.width > 700, JSON.stringify(wideWithToc));
+const wideNoToc = await readerLayout(1400, true);
+check('short article without contents is centered and full-width', !wideNoToc.toc && wideNoToc.width > 700 && Math.abs(wideNoToc.center) < 2, JSON.stringify(wideNoToc));
+const narrowNoToc = await readerLayout(900, true);
+check('short article remains centered on narrower windows', narrowNoToc.width > 700 && Math.abs(narrowNoToc.center) < 2, JSON.stringify(narrowNoToc));
+await win.setViewportSize({ width: 1400, height: 900 });
 const link = await win.$('.wiki-body p a.wl:not(.in-tree)');
 const linkTitle = await link.getAttribute('data-title');
 await link.click();

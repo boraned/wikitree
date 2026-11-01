@@ -32,7 +32,8 @@ export async function renderReader(root, projectId, nodeId) {
     titleEl,
     node.description ? h('div', { class: 'page-desc' }, node.description) : null,
     body);
-  const scroller = h('div', { class: 'reader-scroll' }, h('div', { class: 'reader-grid' }, toc, article));
+  const grid = h('div', { class: 'reader-grid' }, toc, article);
+  const scroller = h('div', { class: 'reader-scroll' }, grid);
   const loading = h('div', { class: 'loading' }, h('span'), h('span'), h('span'));
   body.append(loading);
   const view = h('div', { class: 'reader' },
@@ -96,7 +97,7 @@ export async function renderReader(root, projectId, nodeId) {
 
   function buildToc() {
     const heads = [...body.querySelectorAll('h2, h3')].filter((x) => x.id && x.textContent.trim());
-    if (heads.length < 2) { toc.remove(); return; }
+    if (heads.length < 2) { toc.remove(); grid.classList.add('no-toc'); return; }
     toc.dir = article.dir;
     toc.append(h('div', { class: 'toc-title' }, 'Contents'),
       ...heads.map((hd) => h('a', { class: `toc-${hd.tagName.toLowerCase()}`, 'data-target': hd.id }, hd.textContent.trim())));
