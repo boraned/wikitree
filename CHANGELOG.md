@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.1
+
+- Fixed short Wikipedia articles without a Contents section appearing narrow and left-aligned instead of centered at the normal reading width.
+
 ## 2.1.0
 
 - Right-click a node → **Remove from Parent Node** detaches it and its branch as a separate top-level tree,
