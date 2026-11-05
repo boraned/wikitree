@@ -25,3 +25,12 @@ export function setAllCollapsed(nodes, collapsed) {
   }
   return changed;
 }
+
+/** Opens every folded ancestor of `id` so the node is shown; the node itself keeps its state. */
+export function expandAncestors(nodes, id) {
+  let changed = false;
+  for (let n = nodes[nodes[id]?.parent]; n; n = nodes[n.parent]) {
+    if (n.collapsed) { n.collapsed = false; changed = true; }
+  }
+  return changed;
+}

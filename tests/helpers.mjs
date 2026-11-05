@@ -41,6 +41,7 @@ export async function launch({ offline = false, example = false, home = HOME } =
   if (offline || (process.platform === 'linux' && !process.env.WIKITREE_TEST_HEADED)) {
     args.push('--ozone-platform=x11');
     delete env.WAYLAND_DISPLAY;
+    delete env.GDK_SCALE; // a HiDPI desktop's scale would clamp the window to its minimum on the virtual screen
   }
   if (offline) {
     args.push('--disable-gpu');

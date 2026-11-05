@@ -3,10 +3,11 @@
 import { api, showError, isOffline, fileUrl, isOpenable } from '../lib/api.js';
 import { navigate } from '../app.js';
 import { h, iconBtn, icon } from '../lib/dom.js';
-import { pickNode, confirmDialog } from '../lib/modal.js';
+import { pickNode, confirmDialog, searchNodes } from '../lib/modal.js';
 import { saveOffline } from '../lib/clean.js';
 import { openHistory } from '../lib/history.js';
-import { expandGenerations, setAllCollapsed } from '../lib/tree-visibility.js';
+import { expandGenerations, setAllCollapsed, expandAncestors } from '../lib/tree-visibility.js';
+import { findNodes } from '../lib/node-search.js';
 import { mountPreview, hostOf, fullscreenTarget, toggleFullscreen } from '../lib/previews.js';
 import * as store from '../lib/store.js';
 
@@ -33,8 +34,9 @@ export async function renderTree(root, projectId) {
   const shrinkAllBtn = h('button', { class: 'btn-ghost tree-action shrink-all' }, 'Shrink all');
   const sizeDownBtn = h('button', { class: 'btn-ghost tree-action node-size-down', title: 'Smaller nodes', 'aria-label': 'Smaller nodes' }, 'A−');
   const sizeUpBtn = h('button', { class: 'btn-ghost tree-action node-size-up', title: 'Larger nodes', 'aria-label': 'Larger nodes' }, 'A+');
+  const searchBtn = iconBtn('search', 'Search nodes', 'icon-btn search-btn');
   const bottomActions = h('div', { class: 'tree-bottom-actions', id: 'tree-bottom-actions' },
-    h('div', { class: 'node-size-controls' }, sizeDownBtn, sizeUpBtn), expandAllBtn, shrinkAllBtn, historyBtn);
+    h('div', { class: 'node-size-controls' }, sizeDownBtn, sizeUpBtn), expandAllBtn, shrinkAllBtn, searchBtn, historyBtn);
   const controlsToggle = iconBtn('back', 'Show controls', 'btn-ghost tree-controls-toggle');
   controlsToggle.setAttribute('aria-controls', 'tree-bottom-actions');
   const bottomSection = h('div', { class: 'tree-controls' }, controlsToggle, bottomActions);
@@ -440,6 +442,26 @@ export async function renderTree(root, projectId) {
     else { N[id].collapsed = true; refresh({ changed: true, arrange: true }); }
   }
 
+  // ---------- search (Ctrl+F / Cmd+F or the magnifier): go to a node, opening the folded branches above it ----------
+  async function findNode() {
+    closeMenus();
+    const id = await searchNodes((q) => findNodes(project, q).map((x) => N[x]), (file) => fileUrl(projectId, file));
+    if (id && N[id] && view.isConnected) goTo(id);
+  }
+  function goTo(id) {
+    if (expandAncestors(N, id)) refresh({ changed: true, arrange: true });
+    const n = N[id];
+    const r = viewport.getBoundingClientRect();
+    // Centred at 100% or closer; zoomed out only as far as needed to show a large node whole.
+    const k = Math.min(Math.max(t.k, 1), (r.width - 80) / n.w, (r.height - 80) / n.h);
+    t = { k, x: r.width / 2 - n.x * k, y: r.height / 2 - (n.y + n.h / 2) * k };
+    apply();
+    flash(id);
+  }
+  searchBtn.onclick = findNode;
+  const isFind = (e) => (e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey
+    && (e.key.toLowerCase() === 'f' || (!/^[a-z]$/i.test(e.key) && e.code === 'KeyF')); // non-Latin layouts
+
   // ---------- pointer: pan, drag, drop ----------
   let pan = null;
   let press = null;
@@ -724,7 +746,15 @@ export async function renderTree(root, projectId) {
     if (menu && !menu.contains(e.target)) closeMenus();
     if (live && !els.get(live)?.contains(e.target) && !document.fullscreenElement) setLive(null);
   };
-  const onKey = (e) => { if (e.key === 'Escape') { closeMenus(); setLive(null); } };
+  const onKey = (e) => {
+    if (e.key === 'Escape') { closeMenus(); setLive(null); }
+    if (isFind(e)) {
+      e.preventDefault();
+      const open = document.querySelector('.node-search .pop-input');
+      if (open) { open.focus(); open.select(); } // already searching
+      else if (!document.querySelector('.modal-back') && !document.fullscreenElement) findNode();
+    }
+  };
   document.addEventListener('pointerdown', onDocDown, true);
   document.addEventListener('keydown', onKey);
 

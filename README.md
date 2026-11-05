@@ -63,6 +63,8 @@ Each is a single file with everything included; it only needs an internet connec
   branch, as a separate tree right where it is.
   The bottom-centre chevron reveals or hides the bottom controls. **Expand all / Shrink all** control
   visibility without changing zoom or pan; a node's **Expand** opens five generations.
+  **Ctrl+F** (Cmd+F on macOS) or the magnifier in the bottom controls finds a node by name, opens the folded
+  branches above it and moves the view to it.
   Arrange and node sizing keep separate trees and scaled node buttons from overlapping.
   Dropping the main root under another node makes that node's highest ancestor the new project root and title.
   Top bar: download all · arrange · fit. History is at the bottom right.

@@ -1,4 +1,4 @@
-// Centered in-app dialogs: confirm and the add-node picker (Wikipedia · web · header · file).
+// Centered in-app dialogs: confirm, the add-node picker (Wikipedia · web · header · file) and node search.
 import { api, LANGS, getLang, setLang, isOffline, cachedSummary } from './api.js';
 import { h, icon } from './dom.js';
 import { MAX_FILE_SIZE } from './file-types.js';
@@ -268,5 +268,58 @@ export function pickNode() {
       }
     });
     if (!navigator.onLine) setStatus('No internet connection', 'offline');
+  });
+}
+
+/**
+ * Finds a node in the open project. `find(query)` returns the matching nodes, best first;
+ * `imageUrl(file)` shows attached images. Resolves the chosen node's id, or null.
+ */
+export function searchNodes(find, imageUrl) {
+  return new Promise((resolve) => {
+    let results = [];
+    let sel = 0;
+    const input = h('input', { class: 'pop-input', placeholder: 'Search nodes', autocomplete: 'off', spellcheck: 'false' });
+    const status = h('div', { class: 'status', hidden: true }, 'No results');
+    const list = h('div', { class: 'results' });
+    const m = openModal(h('div', { class: 'node-search' }, h('div', { class: 'picker-body' }, h('div', { class: 'input-row' }, input), status, list)));
+    m.onClose = (id) => resolve(id || null);
+    input.focus();
+
+    const glyph = (svg) => { const ph = h('div', { class: 'ph web' }); ph.innerHTML = svg; return ph; };
+    const rowIcon = (n) => {
+      if (n.type === 'wiki') return n.thumbLocal || n.thumb ? h('img', { src: n.thumbLocal || n.thumb, alt: '' }) : h('div', { class: 'ph' }, 'W');
+      if (n.type === 'web') return glyph(icon.globe);
+      if (n.type === 'file') return n.kind === 'image' ? h('img', { src: imageUrl(n.file), alt: '' }) : glyph(n.kind === 'audio' ? icon.audio : icon.doc);
+      return glyph(icon.header);
+    };
+    // The same second line the node shows on the canvas.
+    const detail = (n) => (n.type === 'wiki' ? n.description : n.type === 'web' ? hostOf(n.url)
+      : n.type === 'file' ? (n.kind === 'unsupported' ? 'Unsupported file' : n.kind.toUpperCase()) : '');
+    function select(i) {
+      list.children[sel]?.classList.remove('sel');
+      sel = i;
+      list.children[sel]?.classList.add('sel');
+    }
+    input.addEventListener('input', () => {
+      const q = input.value.trim();
+      results = q ? find(q) : [];
+      sel = 0;
+      list.replaceChildren(...results.map((n, i) => h('button', {
+        class: `result${i === 0 ? ' sel' : ''}`, onclick: () => m.close(n.id), onmousemove: () => { if (sel !== i) select(i); },
+      },
+      rowIcon(n),
+      h('div', { class: 'txt' }, h('div', { class: 'title' }, n.title), detail(n) ? h('div', { class: 'desc' }, detail(n)) : null))));
+      list.scrollTop = 0;
+      status.hidden = !q || results.length > 0;
+    });
+    input.addEventListener('keydown', (e) => {
+      if (results.length && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+        e.preventDefault();
+        select((sel + (e.key === 'ArrowDown' ? 1 : -1) + results.length) % results.length);
+        list.children[sel].scrollIntoView({ block: 'nearest' });
+      }
+      if (e.key === 'Enter' && results[sel]) { e.preventDefault(); m.close(results[sel].id); }
+    });
   });
 }

@@ -203,6 +203,7 @@ img.broken { visibility: hidden; }
 .tab-icon { display: inline-flex; vertical-align: -4px; margin-right: 4px; }
 /* All three picker sections share the Attach-file section's size. */
 .picker { --picker-body: 210px; }
+.node-search { --picker-body: 300px; }
 .picker-body { display: flex; flex-direction: column; height: calc(var(--picker-body) + 2px); }
 .picker-body .dropzone { margin-top: 2px; }
 .dropzone { display: flex; width: 100%; flex: 1; min-height: 0; flex-direction: column; align-items: center; justify-content: center; gap: 14px; margin-top: 12px; border: 1px dashed #55565c; border-radius: 12px; background: var(--bg); color: var(--muted); font-size: 14px; font-weight: 650; transition: .16s; }

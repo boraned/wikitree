@@ -30,7 +30,7 @@ function run(file, { netns = false } = {}) {
   return r.status === 0;
 }
 
-let ok = run('file-bytes.test.mjs') && run('example.test.mjs') && run('tree-visibility.test.mjs') && run('tree-layout.test.mjs') && run('tree-interactions.test.mjs') && run('image-resize.test.mjs') && run('live-previews.test.mjs') && run('file-inspector.test.mjs') && run('file-formats.test.mjs') && run('files.test.mjs') && run('history.test.mjs') && run('app.test.mjs');
+let ok = run('file-bytes.test.mjs') && run('example.test.mjs') && run('tree-visibility.test.mjs') && run('tree-layout.test.mjs') && run('tree-interactions.test.mjs') && run('tree-search.test.mjs') && run('image-resize.test.mjs') && run('live-previews.test.mjs') && run('file-inspector.test.mjs') && run('file-formats.test.mjs') && run('files.test.mjs') && run('history.test.mjs') && run('app.test.mjs');
 if (ok && offline) {
   if (!linux || !has('unshare') || !has('ip')) {
     console.log('\nOffline test needs Linux with unshare and ip; skipped.');
