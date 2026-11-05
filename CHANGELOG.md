@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0
+
+- **Ctrl+F** (**Cmd+F** on macOS), or the new magnifier in the bottom controls, searches the project's nodes by
+  title, description or web address, including nodes inside folded branches. Picking a result opens the folded
+  branches above it and centres the view on it at 100% zoom (less only when the node is larger than the window).
+
 ## 2.1.1
 
 - Fixed short Wikipedia articles without a Contents section appearing narrow and left-aligned instead of centered at the normal reading width.
